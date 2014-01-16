@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-
+gem 'bootstrap-sass-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -30,6 +30,19 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :test, :development do
+	gem 'rspec-rails', "~> 2.14.0"
+	gem "factory_girl_rails", "4.2.1"
+end
+
+group :test do
+	gem "faker", "~> 1.1.2"
+	gem "capybara", "~> 2.1.0"
+	gem "database_cleaner", "~> 1.0.1"
+	gem "launchy", "~> 2.3.0"
+	gem "selenium-webdriver", "~> 2.35.1"
 end
 
 # Use ActiveModel has_secure_password
