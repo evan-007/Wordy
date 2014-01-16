@@ -1,28 +1,8 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App for working with http://newgeneralservicelist.com and Corpus Linguistics Data. 
 
-Things you may want to cover:
+For http://thinkful.com final project.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
+Demo at: http://stormy-earth-2247.herokuapp.com/
 <tt>rake doc:app</tt>.
