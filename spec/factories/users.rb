@@ -7,5 +7,9 @@ FactoryGirl.define do
     password "duckling"
     password_confirmation "duckling"
     password_digest "MyString"
+
+    factory :invalid_user do
+    	name nil
+    end
   end
 end
