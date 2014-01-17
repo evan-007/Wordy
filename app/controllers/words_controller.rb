@@ -1,7 +1,8 @@
 class WordsController < ApplicationController
-	before_action :get_word, only: [:show, :edit, :update]
+	before_action :get_word, only: [:edit, :update]
 
 	def show
+		@word = Word.find_by_name(params[:name])
 	end
 
 	def index
