@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :word do
-    name "MyString"
-    definition "MyText"
-    pos "MyString"
-    ipa "MyString"
+    name "cats"
+    definition "so fluffy"
+    pos "nouns"
+    ipa "/k/ /at/ /s/"
   end
 end
