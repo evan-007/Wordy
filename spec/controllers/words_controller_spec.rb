@@ -25,7 +25,7 @@ describe WordsController do
 	describe "GET #show" do 
 		it "assigns the requested word to @word" do
 			word = create(:word)
-			get :show, id: word
+			get :show, name: word.name
 			expect(assigns(:word)).to eq word
 		end
 
