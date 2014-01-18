@@ -14,7 +14,7 @@ describe List do
   it "does not allow duplicate names per user" do
   	user = create(:user)
   	list1 = user.lists.create(name: 'funny words')
-  	expect(user.lists.build(name: 'funny words')).to have(1).errors_on(:name)
+  	expect(user.lists.build(name: 'funny words')0).to have(1).errors_on(:name)
   end
   it "does allow two users to share a list name" do
   	user1 = create(:user)

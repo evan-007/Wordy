@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   		flash[:notice] = "Thanks for signing up!"
+      render :root
   	else
   		flash[:notice] = "Please fill out the form"
   		render :new
