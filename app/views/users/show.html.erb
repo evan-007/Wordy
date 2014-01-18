@@ -1,10 +1,10 @@
 <h2><%= @user.name %>'s profile</h2>
+<p>
+<%= link_to "New list", new_user_list_path(@user), class: "btn btn-default" %>
+</p>
 Your wordlists:
 <% @user.lists.each do |list| %>
 <li>
 	<%= link_to list.name, [@user, list] %>
 </li>
 <% end %>
-<p>
-<%= link_to "New list", new_user_list_path(@user) %>
-</p>

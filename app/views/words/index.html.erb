@@ -1,8 +1,3 @@
-<% if current_user %>
-Signed in as: <%= current_user.name %> <%= link_to "My profile", user_path(current_user)%> <%= link_to "Sign out", signout_path, method: 'DELETE' %>
-<% else %>
-<%= link_to "Sign in", signin_path %> or <%= link_to "Sign up", new_user_path %>
-<% end %>
 <h2>Welcome to the NGSL Dictionary</h2>
 <h3>Here are the NGSL words:</h3>
 

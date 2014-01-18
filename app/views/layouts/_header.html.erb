@@ -1,0 +1,9 @@
+<nav class="navbar navbar-default" role="navigation">
+	    <%= link_to "Thinkful App", root_path, class: "navbar-brand" %>
+	    <% if current_user %>
+
+	     <%= link_to "My profile", user_path(current_user), class: "btn btn-default navbar-btn navbar-right"%> <%= link_to "Sign out", signout_path, method: 'DELETE', class: "btn btn-default navbar-btn navbar-right" %><p class="navbar-text navbar-right">Signed in as:<%= current_user.name %></p>
+	    <% else %>
+	      <%= link_to "Sign in", signin_path, class: "btn btn-default navbar-btn navbar-right" %> <%= link_to "Sign up", new_user_path, class: "btn btn-default navbar-btn navbar-right" %>
+	    <% end %>
+</nav>
