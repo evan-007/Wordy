@@ -6,7 +6,6 @@ FactoryGirl.define do
     email "dd@ducks.com"
     password "duckling"
     password_confirmation "duckling"
-    password_digest "MyString"
 
     factory :invalid_user do
     	name nil
