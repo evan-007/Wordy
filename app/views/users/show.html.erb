@@ -5,6 +5,6 @@
 Your wordlists:
 <% @user.lists.each do |list| %>
 <li>
-	<%= link_to list.name, [@user, list] %>
+	<%= link_to list.name, [@user, list] %>    <%= link_to "Delete", [@user, list], method: 'delete' %>
 </li>
 <% end %>

@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :show]
-  before_action :find_list, only: [:show]
+  before_action :set_user, only: [:new, :create, :show, :destroy]
+  before_action :find_list, only: [:show, :destroy]
   def show
   end
 
@@ -26,6 +26,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @list.destroy
+    flash[:notice] = "List deleted!"
+    redirect_to @user
   end
 
   private

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :list do
-    name "MyString"
+    name "Best list ever"
     user nil
   end
 end
