@@ -1,2 +1,10 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<h2>Create a new list</h2>
+<%= form_for [@user, @list] do |f| %>
+	<p>
+		<%= f.label :name %>
+	</p>
+	<p>
+		<%= f.text_field :name %>
+	</p>
+	<%= f.submit "Create list" %>
+<% end %>

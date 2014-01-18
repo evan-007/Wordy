@@ -1,10 +1,4 @@
 Wordy::Application.routes.draw do
-  get "lists/show"
-  get "lists/new"
-  get "lists/create"
-  get "lists/edit"
-  get "lists/update"
-  get "lists/destroy"
   resources :words 
   resources :users do
   	resources :lists
