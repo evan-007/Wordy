@@ -8,7 +8,7 @@ feature "Adding words to lists" do
 		sign_in_as!(user)
 		visit('/')
 		click_link('cats')
-		select("Best list ever", from: "list_name")
+		select("Best list ever", from: "list")
 		click_on('Add')
 		expect(page).to have_content('Added to your list')
 	end

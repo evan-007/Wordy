@@ -1,11 +1,12 @@
 class WordlistsController < ApplicationController
 	def create
-		@wordlist = Word.find(params[:word]).wordlists.build(list: params[:list])
+		@wordlist = Word.find(params[:word]).wordlists.build(list_id: params[:list])
 		if @wordlist.save
-			flash[:notice] = "Added to list"
+			flash[:notice] = "Added to your list"
 			redirect_to root_path
 		else
 			flash[:error] = "Can't add that word"
+			redirect_to root_path
 		end
 	end
 
