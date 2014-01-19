@@ -1,4 +1,5 @@
 Wordy::Application.routes.draw do
+  resources :wordlists, only: [:create, :destroy]
   resources :words 
   resources :users do
   	resources :lists
