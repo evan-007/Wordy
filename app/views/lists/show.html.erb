@@ -1,3 +1,14 @@
 <h2><%= @list.name %></h2>
+<% if @list.wordlists.first != nil %>
+<p>Here are the words on your list:</br></p>
+
+<% @list.wordlists.all.each do |wordlist| %>
+<li>
+<%= wordlist.word.name %> <%= link_to "Delete" %>
+</li>
+<% end %>
+<% else %>
+<p>No words on your list yet, why not <%= link_to "add some", dictionary_path %></br>
+<% end %> 
 
 <%= link_to "Back to profile", @user %>

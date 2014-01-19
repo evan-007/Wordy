@@ -12,4 +12,7 @@ feature "Adding words to lists" do
 		click_on('Add')
 		expect(page).to have_content('Added to your list')
 	end
+
+	scenario "can/can't add a word to the same list multiple times?"
+	
 end
