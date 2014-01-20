@@ -7,6 +7,23 @@ task :import_db => :environment do
 	end
 end
 
+task :db_pos => :environment do
+	require 'csv'
+	require 'nokogiri'
+	require 'open-uri'
+	words = 0
+	definitions =1
+	pos = 2
+	@counter = 0
+	CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
+		page = Nokogiri::HTML(open('http://dictionary.reference.com/browse/'+"#{row[0]}"))
+		newpos = page.xpath('/html/body/div[3]/div[2]/div[2]/center/div/div/div[2]/div[3]/div/div[3]/div/div/div/div/div[2]/div/span').first.text
+		row[pos] = newpos
+		@counter += 1
+		break if @counter > 10
+	end
+end
+
 task :import_pos => :environment do
 	require 'nokogiri'
 	require 'open-uri'
