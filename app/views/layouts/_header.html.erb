@@ -4,7 +4,7 @@
 		    <p class="navbar-text navbar-left">Signed in as:  <%= current_user.name %></p>
 		    <%= link_to "Sign out", signout_path, method: 'DELETE', class: "btn btn-default navbar-btn navbar-right" %>
 		    <%= link_to "My profile", user_path(current_user), class: "btn btn-default navbar-btn navbar-right"%> 
-		    <%= link_to "Word Tool", nil, class: "btn btn-primary navbar-btn navbar-right" %>
+		    <%= link_to "Word Tool", word_tool_path, class: "btn btn-primary navbar-btn navbar-right" %>
 		    <%= link_to "Quiz", nil, class: "btn btn-success navbar-btn navbar-right" %>
 	     
 	    <% else %>

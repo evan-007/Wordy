@@ -5,7 +5,9 @@ Wordy::Application.routes.draw do
   	resources :lists
   end
   
-  match '/dictionary', to: 'words#index', via: 'get'
+  get '/word-tool', to: 'tools#new', as: 'word_tool'
+  post '/word-tool', to: 'tools#create'
+  get '/dictionary', to: 'words#index'
   get '/dictionary/:name', to: 'words#show', as: 'definition'
   root 'words#index'
   get '/signin', to: "sessions#new"

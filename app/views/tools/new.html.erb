@@ -1,0 +1,7 @@
+<h3>Enter your text below</h3>
+Find out which words are on the NGSL list:
+<%= form_tag(controller: 'tools', action: 'create', method: 'post') do %>
+    <%= label_tag(:input) %>
+	<%= text_field_tag(:input) %>
+	<%= submit_tag "Submit" %>
+	<% end %>
