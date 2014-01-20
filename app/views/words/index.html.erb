@@ -1,8 +1,8 @@
-<h2>Welcome to the NGSL Dictionary</h2>
 <h3>Here are the NGSL words:</h3>
 
 <% @words.each do |word| %>
-<li>
+
 	<%= link_to word.name, definition_path(word.name) %>
-</li>
+<br/>
 <% end %>
+<%= will_paginate @words %>

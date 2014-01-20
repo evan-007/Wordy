@@ -1,4 +1,5 @@
 class WordsController < ApplicationController
+	require 'will_paginate/array'
 	before_action :get_word, only: [:edit, :update]
 	before_action :get_list
 
@@ -7,7 +8,7 @@ class WordsController < ApplicationController
 	end
 
 	def index
-		@words = Word.all
+		@words = Word.paginate(:page => params[:page])
 	end
 
 	def edit
