@@ -8,11 +8,11 @@ feature "Creating a new account" do
 		fill_in 'Password', with: 'galbitang'
 		fill_in 'Password confirmation', with: 'galbitang'
 		click_button('Register')
-		expect(page).to have_content('Thanks for signing up!')
+		expect(page).to have_content('You have signed up successfully.')
 	end
 	scenario "is not valid without valid params" do
 		visit(new_user_path)
 		click_button('Register')
-		expect(page).to have_content('Please fill out the form')
+		expect(page).to have_content('prohibited this user from being saved')
 	end
 end

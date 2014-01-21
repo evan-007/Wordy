@@ -4,7 +4,7 @@ feature "Viewing user profiles" do
 	scenario "can a profile after logging in" do
 		user = create(:user)
 		visit('/signin')
-		fill_in 'Name', with: user.name
+		fill_in 'Email', with: user.email
 		fill_in 'Password', with: user.password
 		click_button('Sign in')
 		click_link('My profile')

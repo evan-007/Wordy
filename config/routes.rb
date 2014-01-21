@@ -1,4 +1,5 @@
 Wordy::Application.routes.draw do
+  devise_for :users
   resources :wordlists, only: [:create, :destroy]
   resources :words 
   resources :users do
@@ -10,8 +11,12 @@ Wordy::Application.routes.draw do
   get '/dictionary', to: 'words#index'
   get '/dictionary/:name', to: 'words#show', as: 'definition'
   root 'words#index'
-  get '/signin', to: "sessions#new"
-  post '/signin', to: "sessions#create"
-  delete '/signout', to: "sessions#destroy"
+
+  devise_scope :user do
+    get '/signup', to: "devise/registrations#new"
+    get '/signin', to: "devise/sessions#new"
+    post '/signin', to: "devise/sessions#create"
+    delete '/signout', to: "devise/sessions/#delete"
+  end
 
 end
