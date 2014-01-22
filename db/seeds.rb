@@ -12,12 +12,9 @@ categories = Category.create([ { name: 'Beginner'}, {name: 'Intermediate'}, {nam
 require 'csv'
 words = 0 #value is the column in the .csv
 definitions = 1
-@counter = 0
+category = Category.first(offset: rand(Category.count))
 CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
-	Word.create(name: row[words], definition: row[definitions])
-	@counter += 1
-	if @counter > 60
-		exit
-	end
+	Word.create(name: row[words], definition: row[definitions], categories: [category,])
 end
+
 
