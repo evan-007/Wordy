@@ -12,17 +12,18 @@ feature "Building word quizzes" do
 		visit '/'
 		click_link "Quiz"
 		click_link "New Quiz"
-		select "Beginner", from: 'Word list:'
+		select "Beginner", from: 'quiz[lists]'
+		select "1", from: "Kind"
 		fill_in "Name", with: "Easy quiz"
-		click_button "Create Quiz"
-		expect(page).to have_content ("Quiz was created")
+		click_button "Create"
+		expect(page).to have_content ("Quiz created")
 	end
 
 	scenario "Users cannot build quizzes with invalid params" do
 		visit '/'
 		click_link "Quiz"
 		click_link "New Quiz"
-		click_button "Create Quiz"
+		click_button "Create"
 		expect(page).to have_content ("Quiz was not created")
 	end
 end

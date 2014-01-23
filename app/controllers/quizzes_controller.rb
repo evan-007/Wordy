@@ -15,11 +15,11 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
-			flash[:notice] = "Quiz create"
+			flash[:notice] = "Quiz created"
 			redirect_to [@user, @quiz]
 		else
 			flash[:notice] = "Quiz was not created"
-			render :new
+			redirect_to new_user_quiz_path
 		end
 	end
 
