@@ -1,0 +1,49 @@
+class QuizzesController < ApplicationController
+	before_action :get_user, only: [:new, :create, :show, :index]
+	before_action :get_all_lists, only: [:new]
+
+	def index
+	end
+
+	def new
+		@quiz = @user.quizzes.build
+	end
+
+	def show
+	end
+
+	def create
+		@quiz = @user.quizzes.build(quiz_params)
+		if @quiz.save
+			flash[:notice] = "Quiz create"
+			redirect_to [@user, @quiz]
+		else
+			flash[:notice] = "Quiz was not created"
+			render :new
+		end
+	end
+
+
+	private
+		def get_quiz
+			@quiz = @user.quizzes.find(params[:id])
+		end
+
+		def get_user
+			@user = current_user
+		end
+
+		def get_all_lists
+			a = current_user.lists.all
+			List.all.each do |l|
+				if l.id < 4
+					a << l
+				end
+			end
+			@all_lists = a
+		end
+
+		def quiz_params
+			params.require(:quiz).permit(:name, :list, :type)
+		end
+end

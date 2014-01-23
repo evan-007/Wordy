@@ -1,0 +1,23 @@
+<h2>Make a New quiz</h2>
+
+<%= form_for [@user, @quiz] do |f| %>
+<p>
+	<%= f.label :list %>
+</p>
+<p>
+  <%= f.select(:lists, options_for_select(@all_lists.collect { |l| [l.name, l.id]} )) %>
+</p>
+<p>
+	<%= f.label :kind %>
+</p>
+<p>
+	<%= f.select(:kind, [['1', 1], ['2', 2], ['3', 3]]) %>
+</p>
+<p>
+	<%= f.label :name %>
+</p>
+<p>
+	<%= f.text_field :name %>
+</p>
+  <%= f.submit "Create" %>
+<% end %>

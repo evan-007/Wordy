@@ -24,7 +24,7 @@ CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
 	end
 end
 
-Word.all.each do |word|  #why doesn't this work as a seed task, but works in rails console?
+f = Word.all.each do |word|  #why doesn't this work as a seed task, but works in rails console?
 	if word.categories.first.id == 1
 		Wordlist.create(list_id: 1, word_id: word.id)
 	elsif word.categories.first.id == 2
