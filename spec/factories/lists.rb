@@ -9,6 +9,7 @@ FactoryGirl.define do
     factory :sys_list do
     	name "Beginner"
     	id 1
+    	#this needs to create a word or else the test will never pass
     end
   end
 end
