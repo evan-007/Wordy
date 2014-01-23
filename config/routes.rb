@@ -5,6 +5,7 @@ Wordy::Application.routes.draw do
   resources :users do
   	resources :lists
   end
+  get '/ngsl/:name', to: 'lists#sys_list', as: 'sys_list'
   
   get '/word-tool', to: 'tools#new', as: 'word_tool'
   post '/word-tool', to: 'tools#create'

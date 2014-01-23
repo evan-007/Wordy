@@ -4,6 +4,12 @@ class ListsController < ApplicationController
   def show
   end
 
+  def sys_list
+    @list = List.find_by_name(params[:name])
+  end
+
+
+
   def new
     @list = @user.lists.build
   end

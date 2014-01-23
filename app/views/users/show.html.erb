@@ -19,6 +19,6 @@ You have no lists! Why not <%= link_to "build one", new_user_list_path(@user) %>
 The NGSL lists:
 <% @lists.each do |list| %>
 <li>
-	<%= link_to list.name, nil %>
+	<%= link_to list.name, sys_list_path(list.name) %>
 </li>
 <% end %>
