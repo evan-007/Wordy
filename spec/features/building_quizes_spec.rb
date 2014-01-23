@@ -26,4 +26,8 @@ feature "Building word quizzes" do
 		click_button "Create"
 		expect(page).to have_content ("Quiz was not created")
 	end
+
+	scenario "can view a quiz on user page"
+
+	sceanrio "take a quiz"
 end
