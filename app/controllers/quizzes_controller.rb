@@ -1,10 +1,10 @@
 class QuizzesController < ApplicationController
 	before_action :get_user, only: [:new, :create, :show, :index]
 	before_action :get_all_lists, only: [:new]
+	before_action :get_categories, only: [:index, :new]
 
 
 	def index
-		get_categories
 	end
 
 	def new
@@ -46,7 +46,7 @@ class QuizzesController < ApplicationController
 		end
 
 		def quiz_params
-			params.require(:quiz).permit(:name, :list, :type)
+			params.require(:quiz).permit(:name, :category_id)
 		end
 
 		def get_categories

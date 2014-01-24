@@ -2,16 +2,10 @@
 
 <%= form_for [@user, @quiz] do |f| %>
 <p>
-	<%= f.label :list %>
+	<%= f.label :category %>
 </p>
 <p>
-  <%= f.select(:lists, options_for_select(@all_lists.collect { |l| [l.name, l.id]} )) %>
-</p>
-<p>
-	<%= f.label :kind %>
-</p>
-<p>
-	<%= f.select(:kind, [['1', 1], ['2', 2], ['3', 3]]) %>
+  <%= f.select(:category_id, options_for_select(@categories.collect { |c| [c.name, c.id]} )) %>
 </p>
 <p>
 	<%= f.label :name %>

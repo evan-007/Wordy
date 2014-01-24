@@ -15,9 +15,10 @@ feature "Quiz" do
 	scenario "is created from categories" do
 		visit user_quizzes_path(@user)
 		click_link ('New Quiz')
-		select('Beginner'), from: 'Category'
-		fill_in('Name'), with: 'Best quiz evah'
-		click_button 'Create Quiz'
+		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option
+#		select 'Beginner', from: 'quiz[category_id]'
+		fill_in 'Name', with: 'Best quiz evah'
+		click_button 'Create'
 		expect(page).to have_content('Quiz created')
 	end
 end
