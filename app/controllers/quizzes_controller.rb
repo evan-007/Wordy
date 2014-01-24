@@ -1,4 +1,6 @@
 class QuizzesController < ApplicationController
+	require 'open-uri'
+	require 'nokogiri'
 	before_action :get_user, only: [:new, :create, :show, :index]
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
@@ -19,8 +21,11 @@ class QuizzesController < ApplicationController
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
 			@quiz.category.words.each do |w|
-				Question.create(word: w.name, quiz_id: @quiz.id)
-			end
+				page = Nokogiri::HTML(open("http://bnc.bl.uk/saraWeb.php?qy=#{w.name}&mysubmit=Go"))
+				example = page.css('html body div#solutions p')[1].text
+				Question.create(word: w.name, quiz_id: @quiz.id, text: example)
+				
+				end
 			flash[:notice] = "Quiz created"
 			redirect_to [@user, @quiz]
 		else
