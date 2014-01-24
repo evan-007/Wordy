@@ -21,11 +21,11 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
-			@quiz.category.words.each do |w|
+			@quiz.category.words.each do |w| #refactor this mess out of the controller!!!
 				page = Nokogiri::HTML(open("http://bnc.bl.uk/saraWeb.php?qy=#{w.name}&mysubmit=Go"))
 				example = page.css('html body div#solutions p')[1].text
-				Question.create(word: w.name, quiz_id: @quiz.id, text: example)
-				
+				q = Question.create(word: w.name, quiz_id: @quiz.id, text: example, answer: [w.name])
+				q.answer << @quiz.category.words.sample(3) #this doesn't work
 				end
 			flash[:notice] = "Quiz created"
 			redirect_to [@user, @quiz]
