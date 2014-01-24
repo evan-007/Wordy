@@ -1,6 +1,5 @@
 class QuizzesController < ApplicationController
-	require 'open-uri'
-	require 'nokogiri'
+	require 'question_builder.rb'
 	before_action :get_user, only: [:new, :create, :show, :index]
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
@@ -21,10 +20,8 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
-			@quiz.category.words.each do |w| #refactor this mess out of the controller!!!
-				page = Nokogiri::HTML(open("http://bnc.bl.uk/saraWeb.php?qy=#{w.name}&mysubmit=Go"))
-				example = page.css('html body div#solutions p')[1].text.html_safe #this needs some way to not return strange characters instead of '' and ""
-				q = Question.create(word: w.name, quiz_id: @quiz.id, text: example, answer: [w.name].push(@quiz.category.words.sample(3)))
+			@quiz.category.words.each do |w|
+				build_questions(w)
 				end
 			flash[:notice] = "Quiz created"
 			redirect_to [@user, @quiz]
