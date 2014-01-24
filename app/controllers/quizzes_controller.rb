@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
 	require 'question_builder.rb'
+	require 'background_question.rb'
 	before_action :get_user, only: [:new, :create, :show, :index]
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
@@ -20,6 +21,7 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
+			# Delayed::Job.enqueue(QuestionJob.new([@user, @quiz])) #this doesn't work, params..
 			@quiz.category.words.each do |w|
 				build_questions(w)
 				end
