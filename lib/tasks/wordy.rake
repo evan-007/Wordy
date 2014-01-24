@@ -49,6 +49,6 @@ end
 task :fake_cats => :environment do
 	words = Word.all.each do |word|
 		category = Category.first(offset: rand(Category.count))
-		word.update(:category, category)
+		word.update(categories: [category,])
 	end
 end
