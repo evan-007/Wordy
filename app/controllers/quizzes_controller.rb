@@ -12,11 +12,15 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
+		@quiz = @user.quizzes.find(params[:id])
 	end
 
 	def create
 		@quiz = @user.quizzes.build(quiz_params)
 		if @quiz.save
+			@quiz.category.words.each do |w|
+				Question.create(word: w.name, quiz_id: @quiz.id)
+			end
 			flash[:notice] = "Quiz created"
 			redirect_to [@user, @quiz]
 		else
