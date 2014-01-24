@@ -52,3 +52,17 @@ task :fake_cats => :environment do
 		word.update(categories: [category,])
 	end
 end
+
+task :heroku_seed => :environment do
+	require 'csv'
+	words = 0 #value is the column in the .csv
+	definitions = 1
+	@counter = 0
+	CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
+		Word.create(name: row[words], definition: row[definitions])
+		@counter += 1
+		if @counter > 60
+			exit
+		end
+	end
+end
