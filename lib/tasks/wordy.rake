@@ -45,3 +45,10 @@ task :import_ipa => :environment do
 		word.update(ipa: ipa)
 	end
 end
+
+task :fake_cats => :environment do
+	words = Word.all.each do |word|
+		category = Category.first(offset: rand(Category.count))
+		word.update(:category category)
+	end
+end
