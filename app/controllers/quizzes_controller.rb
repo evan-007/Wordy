@@ -7,6 +7,7 @@ class QuizzesController < ApplicationController
 
 
 	def index
+		@quizzes = current_user.quizzes
 	end
 
 	def new

@@ -1,9 +1,10 @@
 <h2>Take or make a quiz</h2>
 
-<%= link_to "New Quiz", new_user_quiz_path(current_user) %>
+<%= link_to "New Quiz", new_user_quiz_path(current_user) %></br>
 
-<% @categories.each do |cat| %>
+Your quizzes:
+<% @quizzes.each do |quiz| %>
 	<li>
-		<%= link_to "New "+cat.name+" Quiz", new_user_quiz_path(current_user) %>
+		<%= link_to quiz.name, user_quiz_path(current_user, quiz) %>
 	</li>
 <% end %>
