@@ -52,6 +52,10 @@ group :test do
 	gem "selenium-webdriver", "~> 2.35.1"
 end
 
+group :development do
+	gem "rails-erd"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
