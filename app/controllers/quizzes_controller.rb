@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-	require 'question_builder.rb'
+	# require 'question_builder.rb'
 	require 'background_question.rb'
 	before_action :get_user, only: [:new, :create, :show, :index]
 	before_action :get_all_lists, only: [:new]
