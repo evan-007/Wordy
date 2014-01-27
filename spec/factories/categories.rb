@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :category do
     name "Beginner"
-    # association :word_category
-    # association :word
+    # word_category
+    # word
   end
 end

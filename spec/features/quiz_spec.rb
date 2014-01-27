@@ -4,7 +4,6 @@ feature "Quiz" do
 	before do
 			@user = create(:user)
 			@category = create(:category)
-			@word_category = create(:word_category)
 			sign_in_as!(@user)
 		end
 

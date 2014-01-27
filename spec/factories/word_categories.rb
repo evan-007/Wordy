@@ -2,7 +2,5 @@
 
 FactoryGirl.define do
   factory :word_category do
-  	association :word
-  	association :category
   end
 end

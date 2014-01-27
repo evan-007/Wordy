@@ -5,5 +5,7 @@ FactoryGirl.define do
     word "go"
     text "hey let's ___ to the park"
     answer ["go", "eat", "swim", "fly"]
+    user
+    quiz
   end
 end
