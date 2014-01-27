@@ -1,0 +1,9 @@
+<h2>Question #<%= @question.id %></h2>
+<%= ng_clean(to_blank(@question.text, @question.word)) %><br /><br />
+
+What's the answer?
+<br /><br />
+<%= form_for [@user, @quiz, @question] do |f| %>
+  <%= f.select(:correct, options_for_select(@question.answer)) %><br /><br /><br />
+  <%= f.submit "Next" %>
+<% end %> 
