@@ -1,7 +1,7 @@
 class QuizzesController < ApplicationController
 	# require 'question_builder.rb'
 	require 'background_question.rb'
-	before_action :get_user, only: [:new, :create, :show, :index, :edit]
+	before_action :get_user, only: [:new, :create, :show, :index, :edit, :take]
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
 
@@ -35,7 +35,8 @@ class QuizzesController < ApplicationController
 	end
 
 	def take 
-		@quiz = @user.quizzes.find(params[:id])
+		@quiz = @user.quizzes.find(params[:quiz_id])
+		@questions = @quiz.questions
 	end
 
 	def check 

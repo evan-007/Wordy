@@ -5,6 +5,6 @@
 Your quizzes:
 <% @quizzes.each do |quiz| %>
 	<li>
-		<%= link_to quiz.name, user_quiz_path(current_user, quiz) %>
+		<%= link_to quiz.name, user_quiz_path(current_user, quiz) %> <%= link_to "Take Quiz!", user_quiz_take_path(current_user.id, quiz.id) %>
 	</li>
 <% end %>
