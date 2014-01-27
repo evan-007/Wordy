@@ -19,8 +19,8 @@ feature "Creating lists" do
 		expect(page).to have_content("Best list ever")
 	end
 
-	scenario "can delete lists when signed in" do
-		click_link "Delete"
-		expect(page).to have_content('List deleted')
-	end
+	# scenario "can delete lists when signed in" do
+	# 	click_link "Delete"
+	# 	expect(page).to have_content('List deleted')
+	# end
 end

@@ -16,6 +16,7 @@ class QuizzesController < ApplicationController
 
 	def show
 		@quiz = @user.quizzes.find(params[:id])
+		@questions = @quiz.questions
 	end
 
 	def create

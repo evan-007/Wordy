@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :quiz do
+  	name "Easy quiz"
   end
 end

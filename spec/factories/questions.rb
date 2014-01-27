@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :question do
-    word "MyString"
-    text "MyText"
-    answer ""
+    word "go"
+    text "hey let's ___ to the park"
+    answer ["go", "eat", "swim", "fly"]
   end
 end

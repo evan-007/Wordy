@@ -7,9 +7,9 @@ feature "Viewing NGSL lists" do
 		create(:list)
 		create(:sys_list)
 	end
-	scenario "can view the lists on user profiles" do
-		click_link 'My profile'
-		click_link 'Beginner'
-		expect(page).to have_content("Here is the beginner list:")
-	end
+	scenario "can view the lists on user profiles" #do
+		# click_link 'My profile'
+		# click_link 'Beginner'
+		# expect(page).to have_content("Here is the beginner list:")
+	# end
 end
