@@ -33,6 +33,9 @@ class QuizzesController < ApplicationController
 		end
 	end
 
+	def results
+	end
+
 
 	private
 		def get_quiz
