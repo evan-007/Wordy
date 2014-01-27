@@ -1,6 +1,8 @@
 <% @quiz.questions.each do |question|%>
 <li>
   Question: <%= ng_clean(to_blank(question.text, question.word).html_safe) %><br />
-  Answer: <%= question.answer[0] %>  
+  Answer: <% question.answer.each do |word| %>
+  <%= word %>
+  <% end %>  
 </li>
 <% end %>
