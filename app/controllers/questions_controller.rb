@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 	  end
 
 	  def get_quiz!
-	  	@quiz = current_user.quizzes.find(params[:id])
+	  	@quiz = current_user.quizzes.find(params[:quiz_id])
 	  end
 
 	  def get_question!

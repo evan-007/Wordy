@@ -7,3 +7,6 @@ What's the answer?
   <%= f.select(:guess, options_for_select(@question.answer.shuffle)) %><br /><br /><br />
   <%= f.submit "Next" %>
 <% end %> 
+
+#in this form, all questions can be accessed, rather than just the questions that belong to 
+that one quiz!
