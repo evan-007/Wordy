@@ -14,7 +14,7 @@ class QuizzesController < ApplicationController
 		@quiz = @user.quizzes.build
 	end
 
-	def show #quiz results
+	def show 
 		@quiz = @user.quizzes.find(params[:id])
 		@questions = @quiz.questions
 	end
@@ -34,11 +34,14 @@ class QuizzesController < ApplicationController
 		end
 	end
 
-	def edit #take quiz
+	def take 
 		@quiz = @user.quizzes.find(params[:id])
 	end
 
-	def update #check quiz
+	def check 
+	end
+
+	def results
 	end
 
 
