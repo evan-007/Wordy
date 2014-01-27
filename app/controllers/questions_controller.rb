@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 	def update
 		if @question.update(question_params) && @question.guess == @question.word
 				flash[:notice] = "Good job, here's the next one"
-				render :edit
+				redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
 		else 
 			flash[:notice] = "Read the next one a bit closer"
 			render :edit
