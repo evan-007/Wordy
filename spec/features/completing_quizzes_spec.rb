@@ -4,7 +4,8 @@ feature "Completing Quizzes" do
 	before do #fails because doesn't create words and categories correctly
 		@user = create(:user)
 		@category = create(:category)
-		@word_category = create(:word_category)
+		@word = create(:word)
+		@word_category = create(:word_category, word: @word, category: @category)
 		sign_in_as!(@user)
 		visit quizzes_path
 		click_link ('New Quiz')
@@ -14,10 +15,10 @@ feature "Completing Quizzes" do
 		expect(page).to have_content('Quiz created')
 	end
 
-	scenario "Submitting a quiz returns results" do
+	scenario "Submitting a quiz returns list of questions" do
 		visit quizzes_path
 		click_link('Best quiz evah')
-		expect(page).to have_content('somehtin')
+		expect(page).to have_content('cats')
 
 	end
 
