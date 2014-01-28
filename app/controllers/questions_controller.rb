@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 	def grade
 		@question.update(question_params)
 		if @question.lower_item == nil
+			@question.quiz.update(finished: true) #not in controller!
 			redirect_to quiz_results_path(quiz_id: @question.quiz_id)
 		else
 			flash[:notice] = "Here's the next one"
@@ -16,10 +17,6 @@ class QuestionsController < ApplicationController
 	end
 
 	private
-
-	  def get_quiz!
-	  	@quiz = current_user.quizzes.find(params[:quiz_id])
-	  end
 
 	  def get_question!
 	  	@question = Question.find(params[:question_id])

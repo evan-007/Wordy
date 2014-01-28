@@ -5,7 +5,11 @@
 Your quizzes:
 <% @quizzes.each do |quiz| %>
 	<li>
-		<%= link_to quiz.name, new_quiz_path %> <%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+		<%= link_to quiz.name, quiz_path(quiz) %> 
+		<% if quiz.finished? %>
+			Finished! Check your <%= link_to "Score", quiz_results_path(quiz) %>?
+		<% else %>
+		<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+		<% end %>
 	</li>
-	How to pass in params for user, quiz and question???
 <% end %>

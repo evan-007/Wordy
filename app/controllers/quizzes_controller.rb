@@ -1,5 +1,4 @@
 class QuizzesController < ApplicationController
-	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
 	before_action :get_quiz, only: [:results]
 
@@ -42,15 +41,6 @@ class QuizzesController < ApplicationController
 			@quiz = current_user.quizzes.find(params[:quiz_id])
 		end
 
-		def get_all_lists
-			a = current_user.lists.all
-			List.all.each do |l|
-				if l.id < 4
-					a << l
-				end
-			end
-			@all_lists = a
-		end
 
 		def quiz_params
 			params.require(:quiz).permit(:name, :category_id)

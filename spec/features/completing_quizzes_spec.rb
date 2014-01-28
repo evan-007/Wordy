@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "Completing Quizzes" do
-	before do
+	before do #fails because doesn't create words and categories correctly
 		@user = create(:user)
 		@category = create(:category)
 		@word_category = create(:word_category)
