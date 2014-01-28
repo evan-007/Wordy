@@ -1,4 +1,4 @@
-<h2>Question #<%= @question.id %></h2>
+<h2>Question <%= @question.position %> of <%= @question.quiz.questions.count %></h2>
 <%= ng_clean(to_blank(@question.text, @question.word)) %><br /><br />
 
 What's the answer?

@@ -9,6 +9,6 @@ Here are the incorrect answers:<br /><br />
 <p>
 	<%= ng_clean(to_blank(question.text, question.word)) %><br /><br />
 	Your answer was: <%= question.guess %><br /><br />
-	The correct answer is: <%= question.answer %>
+	The correct answer is: <%= question.word %>
 </p>
 <% end %>

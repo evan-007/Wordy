@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
 		def grade
 			if self.guess == self.word
 				self.correct = true
-			else
+			elsif self.guess != self.word
 			    self.correct = false
 			end
 		end
