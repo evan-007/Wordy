@@ -6,7 +6,7 @@ Wordy::Application.routes.draw do
   resources :quizzes
   resources :questions do
     get 'answer'
-    post 'grade'
+    patch 'grade'
     get 'results'
   end
   

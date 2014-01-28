@@ -1,19 +1,34 @@
 class QuestionsController < ApplicationController
-	before_action :get_quiz!
 	before_action :get_question!
 
 	def edit
 	end
 
-	def update
-		if @question.update(question_params) && @question.guess == @question.word
+	def answer
+	end
+
+	def grade
+			if @question.update(question_params) && @question.guess == @question.word
+				@question.update(correct: true)
 			flash[:notice] = "Good job, here's the next one"
-			redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
+			redirect_to question_answer_path(question_id: (@question.id+1))
 			#this is a bad way to do it - how to make it stop at the right number?
 			#use act as list gem?
 		else 
 			flash[:notice] = "Read the next one a bit closer"
-			redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
+			redirect_to question_answer_path(question_id: (@question.id+1))
+		end
+	end
+
+	def update
+		if @question.update(question_params) && @question.guess == @question.word
+			flash[:notice] = "Good job, here's the next one"
+			redirect_to question_answer_path(question_id: (@question.id+1))
+			#this is a bad way to do it - how to make it stop at the right number?
+			#use act as list gem?
+		else 
+			flash[:notice] = "Read the next one a bit closer"
+			redirect_to question_answer_path(question_id: (@question.id+1))
 		end
 	end
 
@@ -25,7 +40,7 @@ class QuestionsController < ApplicationController
 	  end
 
 	  def get_question!
-	  	@question = Question.find(params[:id])
+	  	@question = Question.find(params[:question_id])
 	  end
 
 	  def question_params
