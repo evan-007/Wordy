@@ -19,7 +19,13 @@ feature "Completing Quizzes" do
 		visit quizzes_path
 		click_link('Best quiz evah')
 		expect(page).to have_content('cats')
-
 	end
 
+	scenario "Completing a quiz renders quizzes#results" do
+		visit quizzes_path
+		click_link "Take quiz"
+		select @word.name, from: "question[guess]"
+		click_button 'Next'
+		expect(page).to have_content('results')
+	end
 end
