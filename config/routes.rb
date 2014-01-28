@@ -3,11 +3,12 @@ Wordy::Application.routes.draw do
   resources :wordlists, only: [:create, :destroy]
   resources :words 
   resources :users
-  resources :quizzes
+  resources :quizzes do
+    get 'results'
+  end
   resources :questions do
     get 'answer'
     patch 'grade'
-    get 'results'
   end
   
   get '/ngsl/:name', to: 'lists#sys_list', as: 'sys_list'

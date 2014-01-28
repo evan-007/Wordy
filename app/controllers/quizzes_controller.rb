@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
+	before_action :get_quiz, only: [:results]
 
 
 	def index
@@ -31,14 +32,6 @@ class QuizzesController < ApplicationController
 		end
 	end
 
-	def take 
-		@quiz = current_user.quizzes.find(params[:quiz_id])
-		@questions = @quiz.questions
-	end
-
-	def check 
-	end
-
 	def results
 	end
 
@@ -46,7 +39,7 @@ class QuizzesController < ApplicationController
 
 	private
 		def get_quiz
-			@quiz = @user.quizzes.find(params[:id])
+			@quiz = current_user.quizzes.find(params[:quiz_id])
 		end
 
 		def get_all_lists

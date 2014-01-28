@@ -1,0 +1,14 @@
+<h2>Here are the results of your quiz:</h2>
+
+<%= @quiz.name %><br />
+
+Out of <%= @quiz.questions.count %> questions, you got <%= @quiz.questions.where(correct: true).count %> correct.
+
+Here are the incorrect answers:<br /><br />
+<% @quiz.questions.where(correct: false).each do |question| %>
+<p>
+	<%= ng_clean(to_blank(question.text, question.word)) %><br /><br />
+	Your answer was: <%= question.guess %><br /><br />
+	The correct answer is: <%= question.answer %>
+</p>
+<% end %>
