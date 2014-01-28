@@ -2,11 +2,14 @@ Wordy::Application.routes.draw do
   devise_for :users
   resources :wordlists, only: [:create, :destroy]
   resources :words 
-  resources :users do
-  	resources :quizzes do
-      resources :questions
-    end
+  resources :users
+  resources :quizzes
+  resources :questions do
+    get 'take'
+    post 'check'
+    get 'score'
   end
+  
   get '/ngsl/:name', to: 'lists#sys_list', as: 'sys_list'
   
   get '/word-tool', to: 'tools#new', as: 'word_tool'

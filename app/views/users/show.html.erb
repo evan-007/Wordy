@@ -1,20 +1,5 @@
 <h2><%= @user.email %>'s profile</h2>
-<p>
-<%= link_to "New list", new_user_list_path(@user), class: "btn btn-default" %>
-</p>
 
-<% if @user.lists == nil %>
-<% @user.lists.each do |list| %>
-Your wordlists:
-<li>
-	<%= link_to list.name, [@user, list] %>    <%= link_to "Delete", [@user, list], method: 'delete' %>
-</li>
-<% end %>
-<% else %>
-You have no lists! Why not <%= link_to "build one", new_user_list_path(@user) %>?
-<% end %>
-<br />
-<br />
 
 The NGSL lists:
 <% @lists.each do |list| %>

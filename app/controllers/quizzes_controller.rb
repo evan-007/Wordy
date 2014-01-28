@@ -27,10 +27,10 @@ class QuizzesController < ApplicationController
 				build_questions(w)
 				end
 			flash[:notice] = "Quiz created"
-			redirect_to [@user, @quiz]
+			redirect_to @quiz
 		else
 			flash[:notice] = "Quiz was not created"
-			redirect_to new_user_quiz_path
+			redirect_to new_quiz_path
 		end
 	end
 

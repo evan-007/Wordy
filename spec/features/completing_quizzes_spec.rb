@@ -6,7 +6,7 @@ feature "Completing Quizzes" do
 		@category = create(:category)
 		@word_category = create(:word_category)
 		sign_in_as!(@user)
-		visit user_quizzes_path(@user)
+		visit quizzes_path
 		click_link ('New Quiz')
 		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option
 		fill_in 'Name', with: 'Best quiz evah'
@@ -15,7 +15,7 @@ feature "Completing Quizzes" do
 	end
 
 	scenario "Submitting a quiz returns results" do
-		visit user_quizzes_path(@user)
+		visit quizzes_path
 		click_link('Best quiz evah')
 		expect(page).to have_content('somehtin')
 

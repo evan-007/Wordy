@@ -8,11 +8,13 @@ class QuestionsController < ApplicationController
 
 	def update
 		if @question.update(question_params) && @question.guess == @question.word
-				flash[:notice] = "Good job, here's the next one"
-				redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
+			flash[:notice] = "Good job, here's the next one"
+			redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
+			#this is a bad way to do it - how to make it stop at the right number?
+			#use act as list gem?
 		else 
 			flash[:notice] = "Read the next one a bit closer"
-			render :edit
+			redirect_to edit_user_quiz_question_path(@user, @quiz, id: (@question.id+1))
 		end
 	end
 

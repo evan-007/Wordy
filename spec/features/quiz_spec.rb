@@ -8,7 +8,7 @@ feature "Quiz" do
 		end
 
 	scenario "is created from categories" do
-		visit user_quizzes_path(@user)
+		visit quizzes_path(@user)
 		click_link ('New Quiz')
 		# select "Beginner", from: 'quiz[category_id]'
 		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option

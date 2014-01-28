@@ -1,11 +1,11 @@
 <h2>Take or make a quiz</h2>
 
-<%= link_to "New Quiz", new_user_quiz_path(current_user) %></br>
+<%= link_to "New Quiz", new_quiz_path %></br>
 
 Your quizzes:
 <% @quizzes.each do |quiz| %>
 	<li>
-		<%= link_to quiz.name, user_quiz_path(current_user, quiz) %> <%= link_to "Take quiz", edit_user_quiz_question_path(current_user, quiz.id, id: quiz.questions.first.id) %> 
+		<%= link_to quiz.name, new_quiz_path %> <%= link_to "Take quiz" %> 
 	</li>
 	How to pass in params for user, quiz and question???
 <% end %>
