@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-	before_action :get_user!
 	before_action :get_quiz!
 	before_action :get_question!
 
@@ -20,9 +19,6 @@ class QuestionsController < ApplicationController
 
 
 	private
-	  def get_user!
-	  	@user = current_user
-	  end
 
 	  def get_quiz!
 	  	@quiz = current_user.quizzes.find(params[:quiz_id])

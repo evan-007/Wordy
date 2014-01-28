@@ -1,7 +1,4 @@
 class QuizzesController < ApplicationController
-	# require 'question_builder.rb'
-	require 'background_question.rb'
-	before_action :get_user, only: [:new, :create, :show, :index, :edit, :take]
 	before_action :get_all_lists, only: [:new]
 	before_action :get_categories, only: [:index, :new]
 
@@ -11,16 +8,16 @@ class QuizzesController < ApplicationController
 	end
 
 	def new
-		@quiz = @user.quizzes.build
+		@quiz = current_user.quizzes.build
 	end
 
 	def show 
-		@quiz = @user.quizzes.find(params[:id])
+		@quiz = current_user.quizzes.find(params[:id])
 		@questions = @quiz.questions
 	end
 
 	def create
-		@quiz = @user.quizzes.build(quiz_params)
+		@quiz = current_user.quizzes.build(quiz_params)
 		if @quiz.save
 			# Delayed::Job.enqueue(QuestionJob.new([@user, @quiz])) #this doesn't work, params..
 			@quiz.category.words.each do |w|
@@ -35,7 +32,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def take 
-		@quiz = @user.quizzes.find(params[:quiz_id])
+		@quiz = current_user.quizzes.find(params[:quiz_id])
 		@questions = @quiz.questions
 	end
 
@@ -50,10 +47,6 @@ class QuizzesController < ApplicationController
 	private
 		def get_quiz
 			@quiz = @user.quizzes.find(params[:id])
-		end
-
-		def get_user
-			@user = current_user
 		end
 
 		def get_all_lists

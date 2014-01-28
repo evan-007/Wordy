@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :show, :destroy]
+  before_action :current_user
   before_action :find_list, only: [:show, :destroy]
   def show
   end
@@ -39,14 +39,10 @@ class ListsController < ApplicationController
 
   private
     def find_list
-      @list = @user.lists.find(params[:id])
+      @list = current_user.lists.find(params[:id])
     end
 
     def list_params
       params.require(:list).permit(:name)
-    end
-
-    def set_user
-      @user = current_user
     end
 end

@@ -5,9 +5,9 @@ Wordy::Application.routes.draw do
   resources :users
   resources :quizzes
   resources :questions do
-    get 'take'
-    post 'check'
-    get 'score'
+    get 'answer'
+    post 'grade'
+    get 'results'
   end
   
   get '/ngsl/:name', to: 'lists#sys_list', as: 'sys_list'
