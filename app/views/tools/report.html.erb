@@ -1,0 +1,6 @@
+Search a text for the NGSL words:
+<h4>Enter your text below</h4>
+<%= form_tag(controller: 'tools', action: 'results', method: 'post') do %>
+	<%= text_area_tag(:text) %><br />
+	<%= submit_tag "Submit" %>
+	<% end %>

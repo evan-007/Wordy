@@ -1,8 +1,9 @@
 class ToolsController < ApplicationController
-	def new
+	def report
 	end
 
-	def create
+	def results
+		@results = Word_search.new.search((params[:text]))
 	end
 
 	
