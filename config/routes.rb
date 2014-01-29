@@ -17,7 +17,9 @@ Wordy::Application.routes.draw do
   post '/word-tool', to: 'tools#create'
   get '/dictionary', to: 'words#index'
   get '/dictionary/:name', to: 'words#show', as: 'definition'
-  root 'words#index'
+  root 'static_pages#welcome'
+  get '/about', to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
 
   devise_scope :user do
     get '/signup', to: "devise/registrations#new"
