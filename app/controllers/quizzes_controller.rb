@@ -20,9 +20,6 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = current_user.quizzes.build(quiz_params)
 		if @quiz.save
-			@quiz.category.words.each do |w|
-				build_questions(w)
-				end
 			flash[:notice] = "Quiz created"
 			redirect_to @quiz
 		else

@@ -8,8 +8,10 @@ Your quizzes:
 		<%= link_to quiz.name, quiz_path(quiz) %> 
 		<% if quiz.finished? %>
 			Finished! Check your <%= link_to "Score", quiz_results_path(quiz) %>?
-		<% else %>
+		<% elsif quiz.questions.first != nil %>
 		<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+		<% else %>
+			This quiz is broken!
 		<% end %>
 	</li>
 <% end %>

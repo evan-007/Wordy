@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
 	belongs_to :quiz
 	serialize :answer,Array
-	after_update :grade
+	before_update :grade
 	acts_as_list scope: :quiz
 
 
