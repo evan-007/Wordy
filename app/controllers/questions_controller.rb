@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
 	before_action :get_question!
+	before_filter :authenticate_user!
 
 
 	def answer

@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
 	before_action :get_categories, only: [:index, :new]
 	before_action :get_quiz, only: [:results]
+	before_filter :authenticate_user!
 
 
 	def index
@@ -19,7 +20,6 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = current_user.quizzes.build(quiz_params)
 		if @quiz.save
-			# Delayed::Job.enqueue(QuestionJob.new([@user, @quiz])) #this doesn't work, params..
 			@quiz.category.words.each do |w|
 				build_questions(w)
 				end
