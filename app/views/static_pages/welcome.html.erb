@@ -1,4 +1,11 @@
 <div class="jumbotron">
+	<% if current_user %>
+	<h1>Hi again!</h1>
+	<p>Take a quiz or check your progress</p>
+	<%= link_to "Take a quiz!", quizzes_path, class: "btn btn-primary btn-lg" %>
+	<%= link_to "Check stats", user_path(current_user), class: "btn btn-primary btn-lg" %>
+	<% else %>
 	<h1>Welcome to Wordy</h1>
-	<p>Here is some text about the site</p>
+	<p>Practice your English -- with real Language!</p>
 	<%= link_to "Sign up", nil, class: "btn btn-primary btn-lg" %>
+	<% end %>

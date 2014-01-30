@@ -6,7 +6,7 @@ gem 'delayed_job_active_record'
 gem 'acts_as_list'
 gem 'will_paginate', "~> 3.0.0"
 gem 'nokogiri', "~> 1.6.1"
-# gem 'rails_12factor'
+gem 'highcharts-rails', '~> 3.0.0'
 gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'

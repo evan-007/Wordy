@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
 
 
 	def index
-		@quizzes = current_user.quizzes
+		@quizzes = current_user.quizzes.order('created_at DESC')
 	end
 
 	def new
@@ -21,7 +21,7 @@ class QuizzesController < ApplicationController
 		@quiz = current_user.quizzes.build(quiz_params)
 		if @quiz.save
 			flash[:notice] = "Quiz created"
-			redirect_to @quiz
+			redirect_to quizzes_path
 		else
 			flash[:notice] = "Quiz was not created"
 			redirect_to new_quiz_path
