@@ -3,7 +3,7 @@ class ToolsController < ApplicationController
 	end
 
 	def results
-		@results = Word_search.new.search((params[:text]))
+		@results = WordSearch.new.search((params[:text]))
 	end
 
 	

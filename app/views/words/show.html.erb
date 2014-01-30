@@ -1,7 +1,7 @@
 <h2><%= @word.name %></h2>
 <% if current_user %>
     <%= form_tag(wordlists_path(word: @word), method: "post") %>
-    <%= select_tag(:list, options_for_select(current_user.lists.all.collect { |l| [ l.name, l.id]  }) )%><br/>
+    <%= select_tag(:list, options_for_select(current_user.lists.collect { |l| [ l.name, l.id]  }) )%><br/>
     <%= submit_tag "Add", class: 'btn btn-default btn-xs' %>
 <% end %>
 <h3>Part of speech: <%= @word.pos %></h3><br /> 

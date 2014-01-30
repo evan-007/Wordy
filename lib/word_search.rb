@@ -1,4 +1,4 @@
-class Word_search
+class WordSearch
 
   def search(text)
   	@words = []
