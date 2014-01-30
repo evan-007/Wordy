@@ -67,5 +67,5 @@ task :heroku_seed => :environment do
 	end
 end
 
-task :seed_examples => :environment do
+task :seed_examples => :environment do 
 end
