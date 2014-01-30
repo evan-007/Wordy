@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def to_blank(body, word)
-		body.sub(word, '_____')
+		body.sub(/\b(?i:#{word})\b/, '_____')
 	end
 
 	def ng_clean(text)
