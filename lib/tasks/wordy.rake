@@ -68,4 +68,20 @@ task :heroku_seed => :environment do
 end
 
 task :seed_examples => :environment do 
+	words = Word.all
+	words.each do |word|
+		page = Nokogiri::HTML(open("http://bnc.bl.uk/saraWeb.php?qy=#{word.name}&mysubmit=Go"), nil, "UTF-8")
+		page.css('html body div#solutions p').each do |sentence|
+			Example.create(text: sentence.text, word_id: word.id)
+		end
+	end
+end
+
+task :clean_examples => :environment do
+	Example.all.each do |example|
+		if /Here is a random selection/.match(example.text)
+			example.destroy
+			puts "destroyed #{example.id}"
+		end
+	end
 end

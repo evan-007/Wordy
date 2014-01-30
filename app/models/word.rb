@@ -4,6 +4,5 @@ class Word < ActiveRecord::Base
 	has_many :lists, through: :wordlists
 	has_many :word_categories
 	has_many :categories, through: :word_categories
-	has_many :quiz_words #quiz words is replaced by quiz-list relation, delete these lines later
-	has_many :quizzes, through: :quiz_words #delete later
+	has_many :examples
 end
