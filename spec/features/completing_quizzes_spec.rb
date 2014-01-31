@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 feature "Completing Quizzes" do
-	before do #fails because doesn't create words and categories correctly
+	before do
 		@user = create(:user)
 		@category = create(:category)
 		@word = create(:word)
 		@word_category = create(:word_category, word: @word, category: @category)
+		@example = create(:example, word: @word)
 		sign_in_as!(@user)
 		visit quizzes_path
 		click_link ('New Quiz')
