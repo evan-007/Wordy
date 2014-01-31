@@ -2,16 +2,35 @@
 
 <%= link_to "New Quiz", new_quiz_path %></br>
 
-Your quizzes:
+Your quizzes:<br /><br />
+<table class = "table table-hover">
+<tr>
+	<th>Name</th>
+	<th>Review Definitions</th>
+	<th>Info</th>
+</tr>
 <% @quizzes.each do |quiz| %>
-	<li>
-		<%= link_to quiz.name, quiz_path(quiz) %> 
+	<tr>
+		<td>
+			<%= link_to quiz.name, quiz_path(quiz) %> 
+		</td>
+		<td>
+			<%= link_to "Review", quiz_review_path(quiz.id) %>
+		</td>
 		<% if quiz.finished? %>
-			Finished! Check your <%= link_to "Score", quiz_results_path(quiz) %>?
+		<td>
+			Finished! <%= link_to "Score", quiz_results_path(quiz) %>
+		</td>
+		<td>
 		<% elsif quiz.questions.first != nil %>
-		<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+		<td>
+			<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+		</td>
 		<% else %>
-			This quiz is broken!
+		<td>
+			<%= link_to "Broken, delete!", nil %>
+		</td>
 		<% end %>
-	</li>
+	</tr>
 <% end %>
+</table>

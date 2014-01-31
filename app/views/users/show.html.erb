@@ -1,4 +1,4 @@
-<h2><%= @user.email %>'s profile</h2>
+<p><%= @user.email %>'s profile<p>
 
 
 The NGSL lists:
@@ -7,3 +7,5 @@ The NGSL lists:
 	<%= link_to list.name, sys_list_path(list.name) %>
 </li>
 <% end %>
+
+<%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary" %>

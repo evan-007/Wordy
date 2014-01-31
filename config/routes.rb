@@ -2,9 +2,10 @@ Wordy::Application.routes.draw do
   devise_for :users
   resources :wordlists, only: [:create, :destroy]
   resources :words 
-  resources :users
+  resources :users, only: [:show]
   resources :quizzes do
     get 'results'
+    get 'review'
   end
   resources :questions do
     get 'answer'

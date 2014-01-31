@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
 	before_action :get_categories, only: [:index, :new]
-	before_action :get_quiz, only: [:results]
+	before_action :get_quiz, only: [:results, :review]
 	before_filter :authenticate_user!
 
 
@@ -29,6 +29,16 @@ class QuizzesController < ApplicationController
 	end
 
 	def results
+	end
+
+	def destroy
+		@quiz = Quiz.find(params[:id])
+		@quiz.destroy
+		flash[:alert] = "Quiz deleted!"
+		redirect_to quizzes_path
+	end
+
+	def review
 	end
 
 

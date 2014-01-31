@@ -13,20 +13,29 @@ feature "Completing Quizzes" do
 		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option
 		fill_in 'Name', with: 'Best quiz evah'
 		click_button 'Create'
-		expect(page).to have_content('Quiz created')
+		visit quizzes_path
 	end
 
-	scenario "Submitting a quiz returns list of questions" do
-		visit quizzes_path
+	scenario "Can view list of questions" do
 		click_link('Best quiz evah')
 		expect(page).to have_content('cats')
 	end
 
 	scenario "Completing a quiz renders quizzes#results" do
-		visit quizzes_path
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
 		expect(page).to have_content('results')
+	end
+
+	scenario "Can review definitions before taking a quiz" do
+		click_link('Review')
+		expect(page).to have_content('so fluffy')
+	end
+
+	scenario "Can delete a quiz" do
+		click_link "Best quiz evah"
+		click_link "Delete"
+		expect(page).to have_content("Quiz deleted!")
 	end
 end

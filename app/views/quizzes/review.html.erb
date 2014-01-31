@@ -1,0 +1,15 @@
+<table class = "table table-striped">
+<tr>
+	<th>Word</th>
+	<th>Definition</th>
+</tr>
+<% @quiz.category.words.each do |word| %>
+<tr>
+	<td>
+		<%= word.name %>
+	</td>
+	<td>
+		<%= word.definition %>
+	</td>
+</tr>
+<% end %>
