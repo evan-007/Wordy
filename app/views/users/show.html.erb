@@ -18,7 +18,7 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: 'Quiz Progress'
+            text: 'Quiz Results'
         },
         xAxis: {
             categories: <%= raw @user.finished_quizzes %>
@@ -29,6 +29,7 @@ $(function () {
             }
         },
         series: [{
+            name: 'Correct answers',
             data:<%= @user.correct_questions %>
         }]
     });

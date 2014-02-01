@@ -10,7 +10,7 @@ feature "Viewing wordlists" do
 	end
 
 	scenario "can view a user's wordlists on Users#show" do
-		click_link 'My profile'
+		visit user_path(@user)
 		click_link @list.name
 		expect(page).to have_content(@word.name)
 	end

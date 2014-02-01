@@ -2,7 +2,7 @@
 
 <h2><%= @quiz.questions.where(correct: true).count %> out of <%= @quiz.questions.count %> correct</h2><br/>
 
-Incorrect answers:<br /><br />
+<strong>Incorrect answers:</strong><br /><br />
 <table class="table">
 	<% @quiz.questions.where(correct: false).each do |question| %>
 	<tr>
@@ -31,7 +31,7 @@ Incorrect answers:<br /><br />
 	</tr>
 	<tr>
 		<td class="success">
-			Your answer was: <%= question.guess %>
+			Your answer: <%= question.guess %>
 		</td>
 	</tr>
 	<% end %>

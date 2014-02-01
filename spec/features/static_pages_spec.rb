@@ -14,8 +14,7 @@ feature "Static pages" do
 	end
 
 	scenario "show the contact page" do
-		visit root_path
-		click_link "Contact"
+		visit contact_path
 		expect(page).to have_content("Contact")
 	end
 end

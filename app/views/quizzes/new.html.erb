@@ -1,17 +1,13 @@
-<h2>Make a New quiz</h2>
-
+<h2>New Quiz</h2>
 <%= form_for @quiz do |f| %>
 <p>
-	<%= f.label :category %>
+	Choose a list or build your own
 </p>
 <p>
-  <%= f.select(:category_id, options_for_select(@categories.collect { |c| [c.name, c.id]} )) %>
+  <%= f.select(:category_id, options_for_select(@categories.collect { |c| [c.name, c.id]} )) %> <%= link_to "New list", nil, class: "btn btn-primary btn-sm" %>
 </p>
 <p>
-	<%= f.label :name %>
-</p>
-<p>
-	<%= f.text_field :name %>
+	<%= f.text_field :name, placeholder: "Quiz name" %>
 </p>
   <%= f.submit "Create" %>
 <% end %>

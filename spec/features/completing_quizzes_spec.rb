@@ -11,7 +11,7 @@ feature "Completing Quizzes" do
 		visit quizzes_path
 		click_link ('New Quiz')
 		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option
-		fill_in 'Name', with: 'Best quiz evah'
+		fill_in 'quiz[name]', with: 'Best quiz evah'
 		click_button 'Create'
 		visit quizzes_path
 	end
@@ -25,7 +25,7 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
-		expect(page).to have_content('results')
+		expect(page).to have_content('Your answer')
 	end
 
 	scenario "Can review definitions before taking a quiz" do

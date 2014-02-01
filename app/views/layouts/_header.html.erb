@@ -1,16 +1,30 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
-	    <%= link_to "Wordy", root_path, class: "navbar-brand" %> 
-	    
+	    <%= link_to "Wordy", root_path, class: "navbar-brand" %>
 	    <% if current_user %>
-		    <%= link_to "Sign out", destroy_user_session_path, method: 'DELETE', class: "btn btn-default navbar-btn navbar-right" %>
-		    <%= link_to "My profile", user_path(current_user), class: "btn btn-default navbar-btn navbar-right"%> 
-		    <%= link_to "Word Tool", word_tool_path, class: "btn btn-primary navbar-btn navbar-right" %>
-		    <%= link_to "Quiz", quizzes_path, class: "btn btn-success navbar-btn navbar-right" %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+                
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Word Tool", word_tool_path %></li>
+                  <li><%= link_to "Quiz", quizzes_path %></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Account Options</li>
+                  <li><%= link_to "My account", user_path(current_user) %></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, method: 'DELETE' %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "About", about_path %></li>
+                  <li><%= link_to "Contact", contact_path %></li>
+                </ul>
+              </li>
+            </ul>
 	     
 	    <% else %>
+		    <%= link_to "About", about_path, class: "btn btn-default navbar-btn navbar-right" %>
 		    <%= link_to "Sign in", new_user_session_path, class: "btn btn-default navbar-btn navbar-right" %>
 		    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-default navbar-btn navbar-right" %>
 	    <% end %>
+
 	</div>
 </nav>
