@@ -82,6 +82,9 @@ task :clean_examples => :environment do
 		if /Here is a random selection/.match(example.text)
 			example.destroy
 			puts "destroyed #{example.id}"
+		elsif /No solutions found for this query/.match(example.text)
+			example.destroy
+			puts "destroyed #{example.id}"
 		end
 	end
 end

@@ -18,9 +18,12 @@ ActiveRecord::Schema.define(version: 20140130020557) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false

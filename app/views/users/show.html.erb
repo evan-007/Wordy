@@ -1,5 +1,7 @@
 <p><%= @user.email %>'s profile<p>
 
+<div id="container" style="width:100%; height:400px;"></div>
+
 
 The NGSL lists:
 <% @lists.each do |list| %>
@@ -9,3 +11,26 @@ The NGSL lists:
 <% end %>
 
 <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary" %>
+<script>
+$(function () { 
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Quiz Progress'
+        },
+        xAxis: {
+            categories: <%= raw @user.finished_quizzes %>
+        },
+        yAxis: {
+            title: {
+                text: '# correct'
+            }
+        },
+        series: [{
+            data:<%= @user.correct_questions %>
+        }]
+    });
+});
+</script>
