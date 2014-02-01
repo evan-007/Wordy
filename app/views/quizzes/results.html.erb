@@ -1,22 +1,38 @@
-<h2>Here are the results of your quiz:</h2>
 
-<%= @quiz.name %><br />
 
-Out of <%= @quiz.questions.count %> questions, you got <%= @quiz.questions.where(correct: true).count %> correct.
+<h2><%= @quiz.questions.where(correct: true).count %> out of <%= @quiz.questions.count %> correct</h2><br/>
 
-Here are the incorrect answers:<br /><br />
-<% @quiz.questions.where(correct: false).each do |question| %>
-<p>
-	<%= ng_clean(to_blank(question.text, question.word)) %><br /><br />
-	Your answer was: <%= question.guess %><br /><br />
-	The correct answer is: <%= question.word %>
-</p>
-<% end %>
-
-<% @quiz.questions.where(correct: true).each do |question| %>
-<p>
-	<%= ng_clean(to_blank(question.text, question.word)) %><br /><br />
-	Your answer was: <%= question.guess %><br /><br />
-	The correct answer is: <%= question.word %>
-</p>
-<% end %>
+Incorrect answers:<br /><br />
+<table class="table">
+	<% @quiz.questions.where(correct: false).each do |question| %>
+	<tr>
+		<td>
+			<strong>Question <%= question.position %></strong>: <%= ng_clean(to_blank(question.text, question.word)) %>
+		</td>
+	</tr>
+	<tr class="danger">
+		<td>
+			Your answer: <%= question.guess %>
+		</td>
+	</tr>
+	<tr class="success">
+		<td>
+			Correct answer: <%= question.word %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<table class="table">
+	<% @quiz.questions.where(correct: true).each do |question| %>
+	<tr>
+		<td>
+			<strong>Question <%= question.position %></strong>: <%= ng_clean(to_blank(question.text, question.word)) %>
+		</td>
+	</tr>
+	<tr>
+		<td class="success">
+			Your answer was: <%= question.guess %>
+		</td>
+	</tr>
+	<% end %>
+</table>
