@@ -8,7 +8,10 @@ class WordSearch
   	end
 
   	input_words = text.downcase.split(" ")
-  	input_words.each do |word|
+    clean_words = input_words.each do |word|
+      word.gsub!(/\W+|\d+/, '')
+    end
+  	clean_words.each do |word|
   		unless @words.include?(word)
   			answer.push(word)
   		end
