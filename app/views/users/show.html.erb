@@ -15,6 +15,7 @@ $(function () {
             categories: <%= raw @user.finished_quizzes %>
         },
         yAxis: {
+            allowDecimals: false,
             title: {
                 text: '# correct'
             }

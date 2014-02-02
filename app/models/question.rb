@@ -4,6 +4,10 @@ class Question < ActiveRecord::Base
 	before_update :grade
 	acts_as_list scope: :quiz
 
+	def finished
+		self.quiz.update(finished: true)
+	end
+
 
 	private
 

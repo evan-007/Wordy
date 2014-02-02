@@ -17,7 +17,7 @@
 		</td>
 		<% if quiz.finished? %>
 		<td>
-			Finished! <%= link_to "Score", quiz_results_path(quiz) %>
+			<%= link_to "Results", quiz_results_path(quiz) %>
 		</td>
 		<td>
 		<% elsif quiz.questions.first != nil %>

@@ -8,7 +8,7 @@ feature "Viewing user profiles" do
 		fill_in 'Password', with: @user.password
 		click_button('Sign in')
 		visit user_path(@user)
-		expect(page).to have_content(@user.name)
+		expect(page).to have_content('Edit Account')
 	end
 
 	scenario "cannot view a profile as an anonymous user"

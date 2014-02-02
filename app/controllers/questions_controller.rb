@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 	def grade
 		@question.update(question_params)
 		if @question.lower_item == nil
-			@question.quiz.update(finished: true) #not in controller?
+			@question.finished
 			redirect_to quiz_results_path(quiz_id: @question.quiz_id)
 		else
 			redirect_to question_answer_path(question_id: (@question.lower_item.id))
