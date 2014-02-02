@@ -1,6 +1,9 @@
 
 
-<h2><%= @quiz.questions.where(correct: true).count %> out of <%= @quiz.questions.count %> correct</h2><br/><%= link_to "Stats", user_path(current_user), class: "btn btn-default pull-right" %>
+<h2><%= @quiz.questions.where(correct: true).count %> out of <%= @quiz.questions.count %> correct</h2><br/>
+<%= link_to "Back to Quizzes", quizzes_path(current_user), class: "btn btn-default pull-right" %>
+<%= link_to "Stats", user_path(current_user), class: "btn btn-default pull-right" %>
+
 
 <strong>Incorrect answers:</strong><br /><br />
 <table class="table">
