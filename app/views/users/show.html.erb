@@ -1,14 +1,5 @@
-<p><%= @user.email %>'s profile<p>
-
 <div id="container" style="width:100%; height:400px;"></div>
 
-
-The NGSL lists:
-<% @lists.each do |list| %>
-<li>
-	<%= link_to list.name, sys_list_path(list.name) %>
-</li>
-<% end %>
 
 <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary" %>
 <script>

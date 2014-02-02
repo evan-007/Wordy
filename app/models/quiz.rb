@@ -4,6 +4,7 @@ class Quiz < ActiveRecord::Base
 	validates :name, presence: true
 	has_many :questions
 	after_create :get_examples
+	self.per_page = 10
 
 	def get_questions
 		@id = self.id

@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
 
 
 	def index
-		@quizzes = current_user.quizzes.order('created_at DESC')
+		@quizzes = current_user.quizzes.order('created_at DESC').paginate(page: params[:page])
 	end
 
 	def new

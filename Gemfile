@@ -5,6 +5,7 @@ gem 'devise'
 gem 'delayed_job_active_record'
 gem 'acts_as_list'
 gem 'will_paginate', "~> 3.0.0"
+gem "will_paginate-bootstrap"
 gem 'nokogiri', "~> 1.6.1"
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'bootstrap-sass'

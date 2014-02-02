@@ -25,8 +25,9 @@ class WordSearch
   def get_def(word)
     @ref = "/xml/"
     page = Nokogiri::HTML(open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{word}?key=3b84ccd5-22a9-44ce-b22e-e5ffbef8e3b1"))
-    definition = page.css('entry_list entry dt').first.text
-      return definition
+    if page.css('entry_list entry dt').first.text?
+      return page.css('entry_list entry dt').first.text
+    end
   end
 
   private
