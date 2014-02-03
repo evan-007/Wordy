@@ -31,7 +31,12 @@ task :import_pos => :environment do
 	words.each do |word|
 		page = Nokogiri::HTML(open('http://dictionary.reference.com/browse/'+"#{word.name}"))
 		pos =page.xpath('/html/body/div[3]/div[2]/div[2]/center/div/div/div[2]/div[3]/div/div[3]/div/div/div/div/div[2]/div/span').first.text
-		word.update(pos: pos)
+		word.update(pos: pos.split.first) #removes whitespace, but cuts defininte article to just definate
+		if word.pos == 'definate'
+			word.upate(pos: "article")
+		elsif word.pos == "indefinate"
+			word.update(pos: "article")
+		end	
 	end
 end
 
