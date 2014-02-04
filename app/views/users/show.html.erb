@@ -17,12 +17,16 @@ $(function () {
         yAxis: {
             allowDecimals: false,
             title: {
-                text: '# correct'
+                text: '# Correct'
             }
         },
         series: [{
-            name: 'Correct answers',
+            name: 'Correct Answers',
             data:<%= @user.correct_questions %>
+        },
+        {
+            name: 'Total Questions',
+            data:<%= @user.toal_questions %>
         }]
     });
 });

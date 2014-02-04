@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
 		return @count
 	end
 
+	def total_questions
+		@count = []
+		self.quizzes.where(finished: true).each do |quiz|
+			@count << quiz.questions.count
+		end
+		return @count
+	end
+
 	def correct_categories
 		@cat_names =[]
 		self.quizzes.where(finished: true).each do |quiz|
