@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'devise'
+gem "paperclip", "~> 3.0"
 gem 'delayed_job_active_record'
 gem 'acts_as_list'
 gem 'will_paginate', "~> 3.0.0"
