@@ -12,7 +12,7 @@ $(function () {
             text: 'Quiz Results'
         },
         xAxis: {
-            categories: <%= raw @user.finished_quizzes %>
+            categories: <%= @user.finished_quizzes.html_safe %>
         },
         yAxis: {
             allowDecimals: false,
