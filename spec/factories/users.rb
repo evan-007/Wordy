@@ -6,6 +6,7 @@ FactoryGirl.define do
     email "dd@ducks.com"
     password "duckling"
     password_confirmation "duckling"
+    avatar { File.new("#{Rails.root}/spec/factories/avatar.png") }
     
 
     factory :invalid_user do

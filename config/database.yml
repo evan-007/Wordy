@@ -6,6 +6,8 @@
 development:
   adapter: postgresql
   database: wordy_dev
+  username: postgres # us /pw only on windows
+  password: fuckfuck
   pool: 5
   timeout: 5000
 
@@ -15,6 +17,8 @@ development:
 test:
   adapter: postgresql
   database: wordy_test
+  username: postgres  #only on windows machine
+  password: fuckfuck
   pool: 5
   timeout: 5000
 
