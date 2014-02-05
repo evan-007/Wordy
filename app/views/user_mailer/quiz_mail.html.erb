@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Nice work!</h1>
+    <p>
+      You've completed 5 quizzes at the site.<br/>
+      Here are you most recent scores:<br/>
+      <% @user.quizzes.where(finished: true).each do |quiz| %>
+      <%= quiz.name %>:<br/>
+      <%= quiz.questions.where(correct: true).count %> out of <%= quiz.questions.count %> correct
+      <% end %>
+
+    </p>
+    <p>
+      Nice work!
+    </p>
+    <p>View all of your stats here: <%= @url %></p>
+  </body>
+</html>

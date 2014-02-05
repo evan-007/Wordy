@@ -5,6 +5,7 @@ class Quiz < ActiveRecord::Base
 	has_many :questions
 	after_create :get_examples
 	self.per_page = 10
+	after_update :count, if: :finished_changed?
 
 	def get_questions
 		@id = self.id
@@ -29,4 +30,11 @@ class Quiz < ActiveRecord::Base
 			q = Question.create(word: w.name, quiz_id: @id, text: rand_example.text, answer: answer_array)
 		end
 	end
+
+    private
+		def count
+			if self.user.quizzes.count % 5 == 0
+				UserMailer.quiz_mail(self.user).deliver
+			end
+		end
 end
