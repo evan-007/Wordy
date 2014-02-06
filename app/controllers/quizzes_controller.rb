@@ -34,8 +34,11 @@ class QuizzesController < ApplicationController
 	def destroy
 		@quiz = Quiz.find(params[:id])
 		@quiz.destroy
-		flash[:alert] = "Quiz deleted!"
-		redirect_to quizzes_path
+		
+		respond_to do |format|
+			format.html { redirect_to quizzes_path }
+			format.js
+		end
 	end
 
 	def review

@@ -1,37 +1,41 @@
-<%= link_to "New Quiz", new_quiz_path, class: "btn btn-info" %></br>
+<div class="panel panel-default">
+	<div class="panel-heading">Take a quiz!</div>
+	<div class="panel-body">
+		<p><%= link_to "New Quiz", new_quiz_path, class: "btn btn-info" %><br />
+		Click the button above to make a new quiz.<br />
+		Click any quiz name to review its words and definitions<br />
+		</p>
+	</div>
+
+	
 
 
-<table class = "table table-hover">
-<tr>
-	<th>Name</th>
-	<th>Review Definitions</th>
-	<th>Info</th>
-</tr>
-<% @quizzes.each do |quiz| %>
-	<tr>
-		<td>
-			<%= link_to quiz.name, quiz_path(quiz) %> 
-		</td>
-		<td>
-			<%= link_to "Review", quiz_review_path(quiz.id) %>
-		</td>
-		<% if quiz.finished? %>
-		<td>
-			<%= link_to "Results", quiz_results_path(quiz) %>
-		</td>
-		<td>
-		<% elsif quiz.questions.first != nil %>
-		<td>
-			<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
-		</td>
-		<% else %>
-		<td>
-			<%= link_to "Broken, delete!", nil %>
-		</td>
+		<% @quizzes.each do |quiz| %>
+			<%= div_for quiz do %>
+				
+						<%= link_to quiz.name, quiz_review_path(quiz.id) %> 
+					
+				<% if quiz.finished? %>
+					
+						<%= link_to "Results", quiz_results_path(quiz) %>
+					
+				<% elsif quiz.questions.first != nil %>
+					
+						<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
+					
+				<% else %>
+					
+						<%= link_to "Broken, delete!", nil %>
+					
+				<% end %>
+					
+						<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
+				
+			<% end %>
 		<% end %>
-	</tr>
-<% end %>
-</table>
+	
+</div>
+
 <div class="text-center">
 <%= will_paginate @quizzes, renderer: BootstrapPagination::Rails %>
 </div>
