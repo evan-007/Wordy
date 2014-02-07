@@ -7,30 +7,29 @@
 		</p>
 	</div>
 
-	
-
-
 		<% @quizzes.each do |quiz| %>
 			<%= div_for quiz do %>
-				
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info">
 						<%= link_to quiz.name, quiz_review_path(quiz.id) %> 
 					
-				<% if quiz.finished? %>
-					
+						<% if quiz.finished? %>
+						
 						<%= link_to "Results", quiz_results_path(quiz) %>
-					
-				<% elsif quiz.questions.first != nil %>
+						
+						<% elsif quiz.questions.first != nil %>
 					
 						<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
 					
-				<% else %>
+						<% else %>
 					
 						<%= link_to "Broken, delete!", nil %>
 					
-				<% end %>
+							<% end %>
 					
 						<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
-				
+					</li>
+				</ul>
 			<% end %>
 		<% end %>
 	
