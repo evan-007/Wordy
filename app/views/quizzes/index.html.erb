@@ -1,40 +1,36 @@
 <div class="panel panel-default">
 	<div class="panel-heading">Take a quiz!</div>
 	<div class="panel-body">
-		<p><%= link_to "New Quiz", new_quiz_path, class: "btn btn-info" %><br />
-		Click the button above to make a new quiz.<br />
+		<div class="span-7 text-center">
+		<p><%= link_to "New Quiz", new_quiz_path, class: "btn btn-info btn-lg" %><br />
 		Click any quiz name to review its words and definitions<br />
 		</p>
+		</div>
 	</div>
-
-		<% @quizzes.each do |quiz| %>
-			<%= div_for quiz do %>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-info">
-						<%= link_to quiz.name, quiz_review_path(quiz.id) %> 
-					
-						<% if quiz.finished? %>
-						
-						<%= link_to "Results", quiz_results_path(quiz) %>
-						
-						<% elsif quiz.questions.first != nil %>
-					
-						<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> 
-					
-						<% else %>
-					
-						<%= link_to "Broken, delete!", nil %>
-					
+	<div class="container">
+	 	<div class="row centered">
+			<% @quizzes.each do |quiz| %>
+				<%= div_for quiz do %>
+					<div class="col-md-3">
+						<div class="span-7 text-center">
+							<img src="assets/question-mark.png" width="90"> <br/>
+							<%= link_to quiz.name, quiz_review_path(quiz.id) %> <br/>
+							<% if quiz.finished? %>
+							<%= link_to "Results", quiz_results_path(quiz) %> <br/>
+							<% elsif quiz.questions.first != nil %>
+							<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> <br/>
+							<% else %>	
+							<%= link_to "Broken, delete!", nil %> <br/>
 							<% end %>
-					
-						<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
-					</li>
-				</ul>
+							<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
+						</div>
+					</div>
+				<% end %>
 			<% end %>
-		<% end %>
-	
-</div>
+		</div> <!--end row-centered-->
+	</div> <!--container-->
+</div> <!--panel-->
 
 <div class="text-center">
-<%= will_paginate @quizzes, renderer: BootstrapPagination::Rails %>
+	<%= will_paginate @quizzes, renderer: BootstrapPagination::Rails %>
 </div>
