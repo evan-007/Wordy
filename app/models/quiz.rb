@@ -25,10 +25,10 @@ class Quiz < ActiveRecord::Base
 			
 			answer_array
 
-			offset = rand(w.examples.count)
-			rand_example = w.examples.first(offset: offset)
+			
+			rand_example = w.examples.shuffle[0].text
 
-			q = Question.create(word: w.name, quiz_id: @id, text: rand_example.text, answer: answer_array)
+			q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
 		end
 	end
 

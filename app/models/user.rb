@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
 	def add_words
 		Word.all.each do |word|
-			list = self.lists.first(offset: rand(self.lists.count))
+			list = self.lists.shuffle[0]
 			word.lists.push(list)
 		end
 	end

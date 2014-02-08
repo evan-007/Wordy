@@ -17,9 +17,9 @@ describe List do
   	expect(user.lists.build(name: 'funny words')).to have(1).errors_on(:name)
   end
   it "does allow two users to share a list name" do
-  	user1 = create(:user)
-  	user2 = create(:user, name: 'sarah', email: 'asdf@yui.com')
-  	list1 = user1.lists.create(name: 'funny words')
-  	expect(user2.lists.create(name: 'funny words')).to be_valid
+  	@user1 = create(:user)
+  	@user2 = create(:user, name: 'sarah', email: 'asdf@yui.com')
+  	list1 = @user1.lists.create(name: 'funny words', user_id: @user1.id)
+  	expect(@user2.lists.create(name: 'funny words', user_id: @user2.id)).to be_valid
   end
 end
