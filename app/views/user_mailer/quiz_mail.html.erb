@@ -7,13 +7,13 @@
     <h1>Nice work!</h1>
     <p>
       You've completed 5 quizzes at the site.<br/>
-      <% if @user.quizzes.finished.count > 5 %>
-      That's <%= @user.quizzes.finished.count %> quizzes total!<br />
+      <% if @user.quizzes.finished.size > 5 %>
+      That's <%= @user.quizzes.finished.size %> quizzes total!<br />
       <% end %>
       Here are you most recent scores:<br/>
       <% @user.quizzes.finished.each do |quiz| %>
       <%= quiz.name %>:<br/>
-      <%= quiz.questions.correct.count %> out of <%= quiz.questions.count %> correct
+      <%= quiz.questions.correct.size %> out of <%= quiz.questions.size %> correct
       <% end %>
 
     </p>

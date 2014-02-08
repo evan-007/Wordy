@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
-	belongs_to :quiz
-	serialize :answer,Array
+	belongs_to :quiz, counter_cache: true
+	serialize :answer, Array
 	before_update :grade
 	acts_as_list scope: :quiz
 	scope :correct, -> { where(correct: true) }

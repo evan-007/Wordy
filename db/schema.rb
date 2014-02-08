@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208070103) do
+ActiveRecord::Schema.define(version: 20140208135447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,8 +87,9 @@ ActiveRecord::Schema.define(version: 20140208070103) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.boolean  "finished",    default: false
+    t.boolean  "finished",        default: false
     t.integer  "list_id"
+    t.integer  "questions_count", default: 0
   end
 
   add_index "quizzes", ["list_id"], name: "index_quizzes_on_list_id", using: :btree

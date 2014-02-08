@@ -34,7 +34,7 @@ class Quiz < ActiveRecord::Base
 
     private
 		def count
-			if self.user.quizzes.count % 5 == 0
+			if self.user.quizzes.size % 5 == 0
 				UserMailer.quiz_mail(self.user).deliver
 			end
 		end
