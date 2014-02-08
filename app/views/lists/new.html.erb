@@ -1,10 +1,15 @@
 <h2>Create a new list</h2>
-<%= form_for [@user, @list] do |f| %>
+<%= form_for @list do |f| %>
 	<p>
 		<%= f.label :name %>
 	</p>
 	<p>
-		<%= f.text_field :name %>
+		<%= f.text_field :name, placeholder: "List name..." %>
+	<p>
+		<%= label_tag "Enter your words:" %>
+	</p>
+	<p>
+		<%= text_area_tag(:words) %>
 	</p>
 	<%= f.submit "Create list" %>
 <% end %>

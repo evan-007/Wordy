@@ -4,7 +4,7 @@
 	Choose a list or build your own
 </p>
 <p>
-  <%= f.select(:list_id, options_for_select(current_user.lists.collect { |l| [l.name, l.id]} )) %> <%= link_to "New list", nil, class: "btn btn-primary btn-sm" %>
+  <%= f.select(:list_id, options_for_select(current_user.lists.collect { |l| [l.name, l.id]} )) %> <%= link_to "New list", new_list_path, class: "btn btn-primary btn-sm" %>
 </p>
 <p>
 	<%= f.text_field :name, placeholder: "Quiz name" %>

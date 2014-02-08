@@ -24,7 +24,6 @@ class Quiz < ActiveRecord::Base
 				end
 			
 			answer_array
-
 			
 			rand_example = w.examples.shuffle[0].text
 

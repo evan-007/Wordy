@@ -4,21 +4,22 @@ class ListsController < ApplicationController
   def show
   end
 
-  def sys_list
-    @list = List.find_by_name(params[:name])
-  end
+  
 
 
 
   def new
-    @list = @user.lists.build
+    @list = current_user.lists.build
   end
 
   def create
-    @list = @user.lists.build(list_params)
+    @list = List.create(list_params)
+    Userlist.create(list_id: @list.id, user_id: current_user.id)
+    @list.update(user_id: current_user.id) if current_user
     if @list.save
+      WordSearch.new.get_words((params[:words]), @list.id)
       flash[:notice] = "List created"
-      redirect_to [@user, @list]
+      redirect_to @list
     else
       flash[:notice] = "List was not created"
       render :new
@@ -34,7 +35,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     flash[:notice] = "List deleted!"
-    redirect_to @user
+    redirect_to lists_path
   end
 
   private
@@ -43,6 +44,6 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:name)
+      params.require(:list).permit(:name, :user_id)
     end
 end

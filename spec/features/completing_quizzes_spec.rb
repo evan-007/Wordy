@@ -12,7 +12,6 @@ feature "Completing Quizzes" do
 		visit quizzes_path
 		click_link ('New Quiz')
 		select @list.name, from: 'quiz[list_id]'
-		# find(:select, 'quiz[list_id]').first(:option, 'Beginner').select_option
 		fill_in 'quiz[name]', with: 'Best quiz evah'
 		click_button 'Create'
 		visit quizzes_path

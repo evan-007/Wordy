@@ -3,6 +3,7 @@ Wordy::Application.routes.draw do
   resources :wordlists, only: [:create, :destroy]
   resources :words 
   resources :users, only: [:show]
+  resources :lists
   resources :quizzes do
     get 'results'
     get 'review'

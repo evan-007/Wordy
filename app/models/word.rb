@@ -5,4 +5,5 @@ class Word < ActiveRecord::Base
 	has_many :word_categories
 	has_many :categories, through: :word_categories
 	has_many :examples
+	scope :ngsl, -> { where(ngsl: true) }
 end

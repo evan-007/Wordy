@@ -30,6 +30,16 @@ class WordSearch
     end
   end
 
+  def get_words(text, list_id)
+      words = text.split(' ')
+      words.each do |word|
+        #how to check if word is correct or not? how to escape if word exists?!?!?
+        new_word = Word.create(name: word, ngsl: false )
+        Wordlist.create(word_id: new_word.id, list_id: list_id)
+        # example = Wordnik.word.get_top_example(word)['text']
+      end
+  end
+
   private
 
     def key

@@ -71,7 +71,7 @@ task :heroku_seed => :environment do
 	definitions = 1
 	@counter = 0
 	CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
-		Word.create(name: row[words], definition: row[definitions])
+		Word.create(name: row[words], definition: row[definitions], ngsl: true)
 		@counter += 1
 		if @counter > 25
 			exit
