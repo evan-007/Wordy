@@ -29,13 +29,12 @@ feature "Completing Quizzes" do
 	end
 
 	scenario "Can review definitions before taking a quiz" do
-		click_link('Review')
+		click_link('Best quiz evah')
 		expect(page).to have_content('so fluffy')
 	end
 
 	scenario "Can delete a quiz" do
-		click_link "Best quiz evah"
 		click_link "Delete"
-		expect(page).to have_content("Quiz deleted!")
+		expect(page).to_not have_content('Best quiz evah')
 	end
 end
