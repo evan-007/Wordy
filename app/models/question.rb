@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
 	serialize :answer,Array
 	before_update :grade
 	acts_as_list scope: :quiz
+	scope :correct, -> { where(correct: true) }
 
 	def finished
 		self.quiz.update(finished: true)

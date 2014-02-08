@@ -7,6 +7,7 @@ class Quiz < ActiveRecord::Base
 	after_create :get_examples
 	self.per_page = 10
 	after_update :count, if: :finished_changed?
+	scope :finished, -> { where(finished: true) }
 
 	def get_questions
 		@id = self.id

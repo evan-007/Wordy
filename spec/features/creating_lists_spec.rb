@@ -23,7 +23,4 @@ feature "Creating new lists" do
 		click_button 'Create list'
 		expect(page).to have_content('Any of various long-tailed')
 	end
-
-
-
 end

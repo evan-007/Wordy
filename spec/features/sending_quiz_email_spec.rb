@@ -28,6 +28,6 @@ feature "Sending email" do
 		@quiz.update(finished: true)
 
 		expect(open_last_email).to be_delivered_from "admin@somesite.com"
-		expect(open_last_email).to be_delivered_to @user.email
+		expect(open_last_email).to have_content("That's 10")
 	end
 end
