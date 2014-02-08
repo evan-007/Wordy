@@ -59,4 +59,8 @@ class QuizzesController < ApplicationController
 		def get_categories
 			@categories = Category.all
 		end
+
+		def get_lists
+			@lists = User.lists.all
+		end
 end

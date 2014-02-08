@@ -11,13 +11,14 @@ categories = Category.create([ { name: 'Beginner'}, {name: 'Intermediate'}, {nam
 lists = List.create([ {name: 'Beginner', id: 1}, { name: 'Intermediate', id: 2}, {name: 'Advanced', id: 3}  ])
 
 
-require 'csv'
+require 'csv' #this doesn't work as a seed item!
 words = 0 #value is the column in the .csv
 definitions = 1
 @counter = 0
 CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
 	category = Category.first(offset: rand(Category.count))
-	Word.create(name: row[words], definition: row[definitions], categories: [category,])
+	list = List.first(offset: rand(List.count))
+	Word.create(name: row[words], definition: row[definitions], categories: [category,], lists: [list,])
 	@counter += 1
 	if @counter > 25
 		exit

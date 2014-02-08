@@ -14,4 +14,9 @@ feature "Creating a new account" do
 		click_button('Sign up')
 		expect(page).to have_content('prohibited this user from being saved')
 	end
+
+	scenario "has default quiz lists" do
+		@user = create(:user)
+		expect(@user.lists.count).to eq 3
+	end
 end

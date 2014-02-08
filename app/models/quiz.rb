@@ -1,6 +1,7 @@
 class Quiz < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
+	belongs_to :list
 	validates :name, presence: true
 	has_many :questions
 	after_create :get_examples

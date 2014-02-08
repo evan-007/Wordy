@@ -58,6 +58,13 @@ task :fake_cats => :environment do
 	end
 end
 
+task :fake_lists => :environment do
+	words = Word.all.each do |word|
+		list = List.first(offset: rand(List.count))
+		word.update(lists: [list,])
+	end
+end
+
 task :heroku_seed => :environment do
 	require 'csv'
 	words = 0 #value is the column in the .csv
