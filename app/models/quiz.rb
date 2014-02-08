@@ -17,9 +17,9 @@ class Quiz < ActiveRecord::Base
 
 	def get_examples
 		@id = self.id
-		self.category.words.each do |w|
+		self.list.words.each do |w|
 			answer_array = [w.name]
-			w.categories.first.words.where.not(name: w.name).sample(3).each do |word|
+			self.list.words.where.not(name: w.name).sample(3).each do |word|
 				answer_array << word.name
 				end
 			

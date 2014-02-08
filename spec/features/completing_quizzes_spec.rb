@@ -3,14 +3,16 @@ require 'spec_helper'
 feature "Completing Quizzes" do
 	before do
 		@user = create(:user)
-		@category = create(:category)
+		@list = create(:list)
+		@userlist = create(:userlist, user: @user, list: @list)
 		@word = create(:word)
-		@word_category = create(:word_category, word: @word, category: @category)
+		@wordlist = create(:wordlist, word: @word, list: @list)
 		@example = create(:example, word: @word)
 		sign_in_as!(@user)
 		visit quizzes_path
 		click_link ('New Quiz')
-		find(:select, 'quiz[category_id]').first(:option, 'Beginner').select_option
+		select @list.name, from: 'quiz[list_id]'
+		# find(:select, 'quiz[list_id]').first(:option, 'Beginner').select_option
 		fill_in 'quiz[name]', with: 'Best quiz evah'
 		click_button 'Create'
 		visit quizzes_path
