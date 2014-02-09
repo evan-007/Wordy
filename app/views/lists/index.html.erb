@@ -1,4 +1,5 @@
-<h2>Your Word Lists:</h2>
+<h2>Your Lists:</h2>
+<%= link_to "New list", new_list_path, class: 'btn btn-info btn-lg' %>
 <% @lists.each do |l| %>
 	<%= div_for l do %>
 		<%= l.name %>
