@@ -1,4 +1,5 @@
 class WordlistsController < ApplicationController
+	before_action :find_wordlist, only: [:destroy]
 	def create
 		@wordlist = Word.find(params[:word]).wordlists.build(list_id: params[:list])
 		if @wordlist.save
@@ -11,6 +12,15 @@ class WordlistsController < ApplicationController
 	end
 
 	def destroy
+		# @list_id = @wordlist.list_id
+		@wordlist.destroy
+
+		respond_to do |format|
+			format.html {
+          flash[:notice] = "List deleted!"
+          redirect_to edit_list_path(@list_id) }
+            format.js
+        end
 	end
 
 	private
@@ -21,5 +31,9 @@ class WordlistsController < ApplicationController
 
 	  def find_word
 	  	@word = Word.find(params[:id])
+	  end
+
+	  def find_wordlist
+	  	@wordlist = Wordlist.find(params[:id])
 	  end
 end

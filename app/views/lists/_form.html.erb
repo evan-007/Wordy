@@ -14,12 +14,14 @@
 	<p>
 			Here are the words on your list:
 	</p>
-			<% @list.words.each do |w| %>
-			<p>
-				<%= w.name %>
-				<%= w.definition %>
-				<%= link_to "Delete", nil %>
-			</p>
+			<% @wordlists.each do |w| %>
+				<%= div_for w do %>
+				<p>
+					<%= w.word.name %>
+					<%= w.word.definition %>
+					<%= link_to "Delete", wordlist_path(w), method: 'delete', remote: true %>
+				</p>
+				<% end %>
 			<% end %>
 		<% end %>
 	<%= f.submit %>

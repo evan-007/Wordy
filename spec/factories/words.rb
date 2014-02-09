@@ -6,5 +6,11 @@ FactoryGirl.define do
     definition "so fluffy"
     pos "nouns"
     ipa "/k/ /at/ /s/"
+
+    factory :many_words do
+    	sequence :name do |n|
+    	"asdf#{n}"
+    	end
+	end 
   end
 end

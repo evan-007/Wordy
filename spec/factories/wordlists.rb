@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :wordlist do
+  	list_id nil
+  	word_id nil
   end
 end

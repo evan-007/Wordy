@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   before_action :current_user
   before_action :find_list, only: [:show, :destroy, :edit, :update]
+  before_action :get_wordlists, only: [:edit]
   def show
   end
 
@@ -41,9 +42,18 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
-    flash[:notice] = "List deleted!"
-    redirect_to lists_path
+    if @list.destroy
+
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "List deleted!"
+          redirect_to lists_path}
+        format.js
+      end
+    else
+      flash[:notice] = "List wasn't deleted?!"
+      redirect_to lists_path 
+    end
   end
 
   private
@@ -53,5 +63,9 @@ class ListsController < ApplicationController
 
     def list_params
       params.require(:list).permit(:name, :user_id)
+    end
+
+    def get_wordlists
+      @wordlists = @list.wordlists
     end
 end
