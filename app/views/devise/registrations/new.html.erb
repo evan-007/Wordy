@@ -12,6 +12,9 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div></br>
 
+  <div><%= f.label :city %><br />
+  <%= f.text_field :city, placeholder: 'San Francisco, USA' %><br /></div>  
+
   <div>Upload an avatar<br />
   <div><%= f.label :avatar %><br />
   	<%= f.file_field :avatar %></div>

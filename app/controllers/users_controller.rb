@@ -1,23 +1,22 @@
 class UsersController < ApplicationController
-  before_action :get_sys_lists, only: [:show]
   before_filter :authenticate_user!
+  before_action :get_user, only: [:show, :map]
   
   def show
-    @user = current_user
   end
 
-
-  def new
-  	@user = User.new
-  end
-
-  def edit
+  def map
+    @users = User.all
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
 
   private
 
-    def get_sys_lists
-      @lists = List.all.where(params[:id] < '4')
+    def get_user
+      @user = current_user
     end
 end

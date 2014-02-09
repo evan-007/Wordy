@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar, styles: { medium: "300x300", thumb: "25x25" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 	after_create :default_lists
+	geocoded_by :city
+	after_validation :geocode, if: :city_changed?
 
 	def finished_quizzes
 		@names = []

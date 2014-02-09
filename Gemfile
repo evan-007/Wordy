@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'devise'
+gem 'geocoder'
+gem 'gmaps4rails'
 gem "paperclip", "~> 3.0"
 gem 'delayed_job_active_record'
 gem 'wordnik'

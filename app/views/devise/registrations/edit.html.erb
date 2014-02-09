@@ -16,12 +16,15 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div><br />
+  <div><%= f.label :city %><br />
+  <%= f.text_field :city, placeholder: 'San Francisco, USA' %><br /></div>  
 
   <div>Change your<br />
     <%= f.label :avatar %><br />
     <%= f.file_field :avatar %></div>
+
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password %></div><br />
 
   <div><%= f.submit "Update" %></div>
 <% end %>
