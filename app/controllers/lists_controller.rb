@@ -1,12 +1,12 @@
 class ListsController < ApplicationController
   before_action :current_user
-  before_action :find_list, only: [:show, :destroy]
+  before_action :find_list, only: [:show, :destroy, :edit, :update]
   def show
   end
 
-  
-
-
+  def index
+    @lists = current_user.lists
+  end
 
   def new
     @list = current_user.lists.build
@@ -30,6 +30,14 @@ class ListsController < ApplicationController
   end
 
   def update
+    if @list.update(list_params)
+      WordSearch.new.get_words((params[:words]), @list.id)
+      flash[:notice] = "List updated"
+      redirect_to @list
+    else
+      flash[:notice] = "List was not updated"
+      redirect_to edit_list_path(@list)
+    end
   end
 
   def destroy

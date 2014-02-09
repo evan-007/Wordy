@@ -1,0 +1,26 @@
+<%= form_for @list do |f| %>
+	<p>
+		<%= f.label :name %>
+	</p>
+	<p>
+		<%= f.text_field :name, placeholder: "List name..." %>
+	<p>
+		<%= label_tag "Enter your words:" %>
+	</p>
+	<p>
+		<%= text_area_tag(:words) %>
+	</p>
+		<% if @list.words.count != 0 %>
+	<p>
+			Here are the words on your list:
+	</p>
+			<% @list.words.each do |w| %>
+			<p>
+				<%= w.name %>
+				<%= w.definition %>
+				<%= link_to "Delete", nil %>
+			</p>
+			<% end %>
+		<% end %>
+	<%= f.submit %>
+<% end %>
