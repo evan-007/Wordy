@@ -3,6 +3,7 @@ class Quiz < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :list
 	validates :name, presence: true
+	validates :kind, presence: true
 	has_many :questions
 	after_create :get_examples
 	self.per_page = 10
