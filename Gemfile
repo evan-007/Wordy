@@ -4,6 +4,7 @@ ruby '2.0.0'
 gem 'devise'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem "faker", "~> 1.1.2"
 gem "paperclip", "~> 3.0"
 gem 'delayed_job_active_record'
 gem 'wordnik'
@@ -51,7 +52,6 @@ group :test, :development do
 end
 
 group :test do
-	gem "faker", "~> 1.1.2"
 	gem "capybara", "~> 2.1.0"
 	gem "database_cleaner", "~> 1.0.1"
 	gem "launchy", "~> 2.3.0"
