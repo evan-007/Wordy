@@ -1,0 +1,16 @@
+<%= div_for quiz do %>
+	<div class="col-md-3">
+		<div class="span-7 text-center">
+			<img src="assets/question-mark.png" width="90"> <br/>
+			<%= link_to quiz.name, quiz_review_path(quiz.id) %> <br/>
+			<% if quiz.finished? %>
+			<%= link_to "Results", quiz_results_path(quiz) %> <br/>
+			<% elsif quiz.questions.first != nil %>
+			<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> <br/>
+			<% else %>	
+			<%= link_to "Broken, delete!", nil %> <br/>
+			<% end %>
+			<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
+		</div>
+	</div>
+<% end %>

@@ -10,24 +10,25 @@
 	</div>
 	<div class="container">
 	 	<div class="row centered">
-			<% @quizzes.each do |quiz| %>
-				<%= div_for quiz do %>
-					<div class="col-md-3">
-						<div class="span-7 text-center">
-							<img src="assets/question-mark.png" width="90"> <br/>
-							<%= link_to quiz.name, quiz_review_path(quiz.id) %> <br/>
-							<% if quiz.finished? %>
-							<%= link_to "Results", quiz_results_path(quiz) %> <br/>
-							<% elsif quiz.questions.first != nil %>
-							<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> <br/>
-							<% else %>	
-							<%= link_to "Broken, delete!", nil %> <br/>
-							<% end %>
-							<%= link_to "Delete", quiz_path(quiz), method: 'delete', data: { confirm: "Are you sure?" }, remote: true %>
-						</div>
-					</div>
-				<% end %>
+	 		<div class="col-md-3 pull-right">
+	 		<%= form_for(Quiz.new, remote: true) do |f| %>
+		 		<p>Choose a list or build your own</p>
+				<p>
+					<%= f.select(:list_id, options_for_select(current_user.lists.collect { |l| [l.name, l.id]} )) %> <%= link_to "New list", new_list_path, class: "btn btn-primary btn-sm" %>
+				</p>
+				<p>
+					Quiz Type
+					<%= select(:quiz, :kind, [['Multiple choice', 1], ['Unscramble', 2], ['Matching', 3]]) %>
+				</p>
+				<p>
+					<%= f.text_field :name, placeholder: "Quiz name" %>
+				</p>
+					<%= f.submit "Create" %>
 			<% end %>
+	 		</div>
+	 		<div class="quizzes">
+			<%= render @quizzes %>
+			</div>
 		</div> <!--end row-centered-->
 	</div> <!--container-->
 </div> <!--panel-->

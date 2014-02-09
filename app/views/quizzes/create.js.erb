@@ -1,0 +1,6 @@
+<% if @quiz.new_record? %>
+    $('input#quiz_name').effect('highlight', { color: 'red'});
+<% else %>
+	$('div#quiz').append("<%= escape_javascript(render @quiz) %>");
+	$('div#<%= dom_id(@quiz) %>').effect('highlight');
+<% end %>
