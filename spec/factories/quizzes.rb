@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :quiz do
   	name "Easy quiz"
+  	kind 1
   end
 end
