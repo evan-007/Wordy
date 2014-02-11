@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	 # validates :name, presence: true, uniqueness: true
+	devise :omniauthable, :omniauth_providers => [:facebook]
+
+  # validates :name, presence: true, uniqueness: true
 	has_many :quizzes, dependent: :destroy
 	has_many :categories, dependent: :destroy
 	has_many :userlists
@@ -59,5 +61,15 @@ class User < ActiveRecord::Base
 			word.lists.push(list)
 		end
 	end
-
+  
+  def self.find_for_facebook_oauth(auth)
+  where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.city = auth.info.locale
+      user.password = Devise.friendly_token[0,20]
+      user.avatar = auth.info.image # assuming the user model has an image
+    end
+  end
 end

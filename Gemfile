@@ -14,6 +14,7 @@ gem "will_paginate-bootstrap"
 gem 'nokogiri', "~> 1.6.1"
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'bootstrap-sass'
+gem 'omniauth-facebook'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
