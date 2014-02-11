@@ -17,8 +17,8 @@ class WordlistsController < ApplicationController
 
 		respond_to do |format|
 			format.html {
-          flash[:notice] = "List deleted!"
-          redirect_to edit_list_path(@list_id) }
+          flash[:notice] = "Word deleted!"
+          redirect_to edit_list_path(@list) }
             format.js
         end
 	end
@@ -35,5 +35,6 @@ class WordlistsController < ApplicationController
 
 	  def find_wordlist
 	  	@wordlist = Wordlist.find(params[:id])
+	  	@list = @wordlist.list_id
 	  end
 end
