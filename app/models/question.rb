@@ -4,10 +4,18 @@ class Question < ActiveRecord::Base
 	before_update :grade
 	acts_as_list scope: :quiz
 	scope :correct, -> { where(correct: true) }
+	scope :completed, -> { where.not(guess: nil) }
+	after_update :call_state_check
 
 	def finished
 		self.quiz.update(finished: true)
 	end
+
+	def call_state_check
+		self.quiz.state_check
+	end
+
+
 
 
 	private

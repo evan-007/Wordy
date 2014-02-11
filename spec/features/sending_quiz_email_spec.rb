@@ -11,10 +11,11 @@ feature "Sending email" do
 
 	scenario "sends email after 5 quiz completions" do
 		4.times do
-			create(:quiz, user: @user, list: @list, finished: true)
+			create(:quiz, user: @user, list: @list, state: 'finished')
 		end
-		@quiz = create(:quiz, user: @user, list: @list, finished: false)
-		@quiz.update(finished: true)
+		@quiz = create(:quiz, user: @user, list: @list, state: 'ready')
+		@question = create(:question, quiz: @quiz, guess: "asdf")
+		@quiz.update(state: 'finished')
 
 		expect(open_last_email).to be_delivered_from "admin@somesite.com"
 		expect(open_last_email).to be_delivered_to @user.email
@@ -22,10 +23,11 @@ feature "Sending email" do
 
 	scenario "sends email after 10 quiz completions" do
 		9.times do
-			create(:quiz, user: @user, list: @list, finished: true)
+			create(:quiz, user: @user, list: @list, state: 'finished')
 		end
-		@quiz = create(:quiz, user: @user, list: @list, finished: false)
-		@quiz.update(finished: true)
+		@quiz = create(:quiz, user: @user, list: @list, state: 'ready')
+		@question = create(:question, quiz: @quiz, guess: "asdf")
+		@quiz.update(state: 'finished')
 
 		expect(open_last_email).to be_delivered_from "admin@somesite.com"
 		expect(open_last_email).to have_content("That's 10")

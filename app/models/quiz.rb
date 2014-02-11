@@ -1,18 +1,32 @@
 class Quiz < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :category
+	belongs_to :category #delete
 	belongs_to :list
 	validates :name, presence: true
 	validates :kind, presence: true
 	has_many :questions
 	after_create :get_examples
 	self.per_page = 10
-	after_update :count, if: :finished_changed?
-	scope :finished, -> { where(finished: true) }
+	after_update :count, if: :state_changed?
+	scope :finished, -> { where(state: 'finished') }
+	after_update :state_check
   
-  state_machine initial: :ready
+	state_machine initial: :ready do
+		event :starting do
+			transition ready: :working
+		end
+		event :finishing do
+			transition working: :finished
+		end
+	end
   
-
+  	def state_check
+  		if self.questions.last.guess != nil
+  			self.finishing
+  		elsif self.questions.completed != nil
+  			self.starting
+  		end
+ 	end
   
 	def get_questions
 		@id = self.id
@@ -39,7 +53,7 @@ class Quiz < ActiveRecord::Base
 
     private
 		def count
-			if self.user.quizzes.size % 5 == 0
+			if self.user.quizzes.finished.size % 5 == 0
 				UserMailer.quiz_mail(self.user).deliver
 			end
 		end
