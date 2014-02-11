@@ -5,9 +5,11 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: wordy_dev
-  # username: postgres # us /pw only on windows
-  # password: fuckfuck
+# for local:
+#  database: wordy_dev
+# for nitrous:
+  user: action
+  host: localhost
   pool: 5
   timeout: 5000
 
@@ -17,8 +19,9 @@ development:
 test:
   adapter: postgresql
   database: wordy_test
-  # username: postgres  #only on windows machine
-  # password: fuckfuck
+  #for nitrous
+  user: action
+  
   pool: 5
   timeout: 5000
 
