@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :example do
-    word nil
+    word 'cat'
     text "cats are so nice"
   end
 end

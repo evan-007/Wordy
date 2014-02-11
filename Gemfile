@@ -8,6 +8,7 @@ gem "faker", "~> 1.1.2"
 gem "paperclip", "~> 3.0"
 gem 'delayed_job_active_record'
 gem 'wordnik'
+gem 'state_machine'
 gem 'acts_as_list'
 gem 'will_paginate', "~> 3.0.0"
 gem "will_paginate-bootstrap"

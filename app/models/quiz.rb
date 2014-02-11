@@ -9,7 +9,11 @@ class Quiz < ActiveRecord::Base
 	self.per_page = 10
 	after_update :count, if: :finished_changed?
 	scope :finished, -> { where(finished: true) }
+  
+  state_machine initial: :ready
+  
 
+  
 	def get_questions
 		@id = self.id
 		self.category.words.each do |w|
