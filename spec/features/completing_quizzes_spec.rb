@@ -6,11 +6,11 @@ feature "Completing Quizzes" do
 		@list = create(:list)
 		@userlist = create(:userlist, user: @user, list: @list)
 		@word = create(:word)
-    @word2 = create(:word, name: 'super')
+	    @word2 = create(:word, name: 'super')
 		@wordlist = create(:wordlist, word: @word, list: @list)
-    @wordlist2 = create(:wordlist, word: @word2, list: @list)
+	    @wordlist2 = create(:wordlist, word: @word2, list: @list)
 		@example = create(:example, word: @word)
-    @example2 = create(:example, word: @word2, text: 'super stuff is great')
+	    @example2 = create(:example, word: @word2, text: 'super stuff is great')
 		sign_in_as!(@user)
 		visit quizzes_path
 		click_link ('New Quiz')
@@ -30,7 +30,7 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
-    click_button 'Next'
+	    click_button 'Next'
 		expect(page).to have_content('Your answer')
 	end
 
@@ -48,8 +48,8 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
-    visit quizzes_path
-    click_link "Take quiz"
+	    visit quizzes_path
+	    click_link "Take quiz"
 		expect(page).to have_content('2 of 2')
 	end
 end

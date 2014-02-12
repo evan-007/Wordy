@@ -13,7 +13,7 @@ feature "Deleting lists" do
 	end
 
 	scenario "users can delete words from a list" do
-		@word = create(:word)
+		@word = create(:word, name: 'testing')
 		@list = create(:list, name: 'superman')
 		@userlist = create(:userlist, user_id: @user.id, list_id: @list.id)
 		@wordlist = create(:wordlist, word_id: @word.id, list_id: @list.id)
@@ -23,6 +23,7 @@ feature "Deleting lists" do
 		end
 		visit lists_path
 		click_link('Edit')
+		expect(page).to have_content('Delete')
 		click_link('Delete')
 		expect(page).to have_content('Word deleted!')
 	end

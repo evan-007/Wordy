@@ -74,8 +74,9 @@ class Quiz < ActiveRecord::Base
         answer_array << word.name
 				end
 			answer_array
-      rand_example = w.examples.shuffle[0].text.split(' ').shuffle.join(' ')
-      q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
+      rand_example = w.examples.shuffle[0].text.sub(/([^\s]+\s+[^\s]+[\s])/, '')
+      example = rand_example
+      q = Question.create(word: example, quiz_id: @id, text: example.split(' ').shuffle.join(' '), answer: answer_array)
     end
   end
   
