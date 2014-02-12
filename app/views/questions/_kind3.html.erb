@@ -1,0 +1,8 @@
+Unscramble the sentence:
+<%= @question.text %><br /><br />
+
+<br /><br />
+<%= form_for @question, url: {action: "grade"} do |f| %>
+<%= f.text_field(:guess, placeholder: 'Enter your answer' ) %><br /><br /><br />
+  <%= f.submit "Next" %>
+<% end %> 

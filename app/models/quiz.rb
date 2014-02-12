@@ -9,6 +9,8 @@ class Quiz < ActiveRecord::Base
     if: Proc.new { |quiz| quiz.kind == 1 } #this works, but read about procs
   after_create :kind_2,
     if: Proc.new { |quiz| quiz.kind == 2 }
+  after_create :kind_3,
+    if: Proc.new { |quiz| quiz.kind == 3 }
   self.per_page = 10
 	after_update :count, if: :state_changed?
 	scope :finished, -> { where(state: 'finished') }
@@ -63,6 +65,21 @@ class Quiz < ActiveRecord::Base
       q = Question.create(word: w.name, quiz_id: @id, text: w.definition, answer: answer_array)
     end
   end
+  
+  def kind_3
+    @id = self.id
+		self.list.words.each do |w|
+			answer_array = [w.name]
+			self.list.words.where.not(name: w.name).sample(3).each do |word|
+        answer_array << word.name
+				end
+			answer_array
+      rand_example = w.examples.shuffle[0].text.split(' ').shuffle.join(' ')
+      q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
+    end
+  end
+  
+  
 
     private
 		def count
