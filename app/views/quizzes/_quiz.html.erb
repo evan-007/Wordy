@@ -6,7 +6,7 @@
 			<% if quiz.finished? %>
 			<%= link_to "Results", quiz_results_path(quiz) %> <br/>
 			<% elsif quiz.questions.first != nil %>
-			<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.first.id) %> <br/>
+			<%= link_to "Take quiz", question_answer_path(question_id: quiz.questions.incomplete.first.id) %> <br/>
 			<% else %>	
 			<%= link_to "Broken, delete!", nil %> <br/>
 			<% end %>

@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
 	acts_as_list scope: :quiz
 	scope :correct, -> { where(correct: true) }
 	scope :completed, -> { where.not(guess: nil) }
+  scope :incomplete, -> { where(guess: nil) }
 	after_update :call_state_check
 
 	def finished

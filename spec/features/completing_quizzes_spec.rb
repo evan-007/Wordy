@@ -29,8 +29,7 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
-    expect(page).to have_content('sdf')
-    select @word2.name, from: "guestion[guess]"
+    click_button 'Next'
 		expect(page).to have_content('Your answer')
 	end
 
@@ -48,6 +47,8 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
-		expect(page).to have_content('Your answer')
+    visit quizzes_path
+    click_link "Take quiz"
+		expect(page).to have_content('2 of 2')
 	end
 end
