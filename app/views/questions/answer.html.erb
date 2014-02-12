@@ -1,9 +1,8 @@
-<h2>Question <%= @question.position %> of <%= @question.quiz.questions.count %></h2>
-<%= ng_clean(to_blank(@question.text, @question.word)) %><br /><br />
 
-What's the answer?
-<br /><br />
-<%= form_for @question, url: {action: "grade"} do |f| %>
-  <%= f.select(:guess, options_for_select(@question.answer.shuffle)) %><br /><br /><br />
-  <%= f.submit "Next" %>
-<% end %> 
+<h2>Question <%= @question.position %> of <%= @question.quiz.questions.count %></h2>
+
+<% if @question.quiz.kind == 1 %>
+    <%= render 'kind1' %>
+<% elsif @question.quiz.kind == 2 %>
+    <%= render 'kind2' %>
+<% end %>

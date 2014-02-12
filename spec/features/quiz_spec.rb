@@ -7,7 +7,7 @@ feature "Quiz" do
 			sign_in_as!(@user)
 		end
 
-	scenario "is created from categories" do
+	scenario "is created from lists" do
 		visit quizzes_path(@user)
 		click_link ('New Quiz')
 		find(:select, 'quiz[list_id]').first(:option, 'Beginner').select_option
