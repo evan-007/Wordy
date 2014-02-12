@@ -6,8 +6,11 @@ feature "Completing Quizzes" do
 		@list = create(:list)
 		@userlist = create(:userlist, user: @user, list: @list)
 		@word = create(:word)
+    @word2 = create(:word, name: 'super')
 		@wordlist = create(:wordlist, word: @word, list: @list)
+    @wordlist2 = create(:wordlist, word: @word2, list: @list)
 		@example = create(:example, word: @word)
+    @example2 = create(:example, word: @word2, text: 'super stuff is great')
 		sign_in_as!(@user)
 		visit quizzes_path
 		click_link ('New Quiz')
@@ -26,6 +29,8 @@ feature "Completing Quizzes" do
 		click_link "Take quiz"
 		select @word.name, from: "question[guess]"
 		click_button 'Next'
+    expect(page).to have_content('sdf')
+    select @word2.name, from: "guestion[guess]"
 		expect(page).to have_content('Your answer')
 	end
 
@@ -37,5 +42,12 @@ feature "Completing Quizzes" do
 	scenario "Can delete a quiz" do
 		click_link "Delete"
 		expect(page).to_not have_content('Best quiz evah')
+	end
+  
+  scenario "re-entering a quiz goes to first unanswered questions" do
+		click_link "Take quiz"
+		select @word.name, from: "question[guess]"
+		click_button 'Next'
+		expect(page).to have_content('Your answer')
 	end
 end
