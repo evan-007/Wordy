@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	after_create :default_lists
 	geocoded_by :city
 	after_validation :geocode, if: :city_changed?
+	scope :localized, -> { where.not(latitude: nil) }
 
 	def finished_quizzes
 		@names = []
