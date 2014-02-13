@@ -11,6 +11,8 @@ feature "Viewing user profiles" do
 		expect(page).to have_content('Edit Account')
 	end
 
-	scenario "cannot view a profile as an anonymous user"
-
+  scenario "cannot view a profile as an anonymous user" do
+    visit user_path(id: 1)
+    expect(page).to have_content "You need to sign in"
+  end
 end
