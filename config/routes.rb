@@ -34,5 +34,8 @@ Wordy::Application.routes.draw do
     post '/signin', to: "devise/sessions#create"
     delete '/signout', to: "devise/sessions/#delete"
   end
+  
+  match "/delayed_job" => DelayedJobWeb, anchor: false, via: [:get, :post]
+
 
 end
