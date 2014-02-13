@@ -5,12 +5,17 @@
 <%= link_to "Stats", user_path(current_user), class: "btn btn-success pull-right" %>
 
 
-<strong>Incorrect answers:</strong><br /><br />
+
 <table class="table">
-	<% @quiz.questions.where(correct: false).each do |question| %>
+	<% @quiz.questions.incorrect.each do |question| %>
 	<tr>
 		<td>
-			<strong>Question <%= question.position %></strong>: <%= ng_clean(to_blank(question.text, question.word)) %>
+			<strong>Question <%= question.position %></strong>: 
+      <% if question.text != nil %>
+          <%= ng_clean(to_blank(question.text, question.word)) %>
+      <% else %>
+          <%= to_blank((get_text(question.word)) , question.word) %>
+      <% end %>
 		</td>
 	</tr>
 	<tr class="danger">
@@ -26,10 +31,17 @@
 	<% end %>
 </table>
 <table class="table">
-	<% @quiz.questions.where(correct: true).each do |question| %>
+	<% @quiz.questions.correct.each do |question| %>
 	<tr>
 		<td>
-			<strong>Question <%= question.position %></strong>: <%= ng_clean(to_blank(question.text, question.word)) %>
+      
+			<strong>Question <%= question.position %></strong>:
+      <% if question.text != nil %>
+          <%= ng_clean(to_blank(question.text, question.word)) %>
+      <% else %>
+          <%= to_blank((get_text(question.word)) , question.word) %>
+      <% end %>
+      
 		</td>
 	</tr>
 	<tr>

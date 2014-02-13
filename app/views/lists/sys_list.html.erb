@@ -1,6 +1,6 @@
 <h2><%= @list.name %></h2>
 <% if @list.wordlists.first != nil %>
-<p>Here are the <%= @list.name %> NGSL words:</br></p>
+<p>Here are the <%= @list.name %> NGSL words:</p><br/>
 
 <% @list.wordlists.all.each do |wordlist| %>
 <li>
@@ -8,7 +8,7 @@
 </li>
 <% end %>
 <% else %>
-<p>No words on your list yet, why not <%= link_to "add some", dictionary_path %></br>
+<p>No words on your list yet, why not <%= link_to "add some", dictionary_path %><br />
 <% end %> 
 
 <%= link_to "Back to profile", current_user %>

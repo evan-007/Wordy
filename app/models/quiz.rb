@@ -49,8 +49,12 @@ class Quiz < ActiveRecord::Base
 				answer_array << word.name
 				end
 			answer_array
-			rand_example = w.examples.shuffle[0].text
-			q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
+      if w.examples.exists?
+			  rand_example = w.examples.shuffle[0].text
+		  	q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
+      else
+        q = Question.create(word: w.name, quiz_id: @id, text: nil, answer: answer_array)
+      end
 		end
 	end
   

@@ -1,0 +1,10 @@
+<%= div_for list do %>
+    <div class="col-md-3">
+		    <div class="span-7 text-center">
+          <%= list.name %><br />
+          <%= list.words.size %> Words<br />
+          <%= link_to "Edit", edit_list_path(list), class: "btn btn-warning btn-sm" %><br />
+          <%= link_to "Delete", list_path(list), method: 'delete', remote: true, class: "btn btn-danger btn-sm" %><br />
+      </div>
+    </div>
+<% end %>

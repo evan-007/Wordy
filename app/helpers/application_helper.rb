@@ -1,4 +1,9 @@
 module ApplicationHelper
+  
+  def get_text(word) 
+    Wordnik.word.get_top_example(word)['text']
+  end
+  
 	def to_blank(body, word)
 		body.sub(/\b(?i:#{word})\b/, '_____')
 	end

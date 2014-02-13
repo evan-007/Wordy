@@ -1,9 +1,6 @@
-<h2>Your Lists:</h2>
-<%= link_to "New list", new_list_path, class: 'btn btn-info btn-lg' %>
-<% @lists.each do |l| %>
-	<%= div_for l do %>
-		<%= l.name %>
-		<%= link_to "Edit", edit_list_path(l) %>
-		<%= link_to "Delete", list_path(l), method: 'delete', remote: true %>
-	<% end %>
-<% end %>
+<div class="span-7 text-center">
+    <%= link_to "New list", new_list_path, class: 'btn btn-info btn-lg' %>
+ <div class="span-7 text-center">
+<div id='lists'>
+  <%= render @lists %>
+</div>
