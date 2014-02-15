@@ -14,7 +14,14 @@ feature "Creating new lists" do
 		expect(page).to have_content('List created')
 	end
 
-	scenario "invalid words aren't added to a list"
+	scenario "invalid words aren't added to a list" do
+		visit new_list_path
+		fill_in 'list_name', with: "Invalid stuff"
+		fill_in 'words', with: "bunch 0f 1nv3lid stuff"
+		click_button 'Create List'
+		expect(page).to_not have_content('1nv3lid')
+		expect(List.last.words).to_not eq('1nv3lid')
+	end
 
 	scenario "definitions are shown for new lists" do
 		visit new_list_path

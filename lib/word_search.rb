@@ -31,15 +31,27 @@ class WordSearch
   end
 
   def get_words(text, list_id)
-      words = text.downcase.split(' ')
+      words = text.downcase.gsub(/[^A-z<>\s]/, '').split(' ')
       words.each do |word|
         if Word.where(name: word).exists?
           Wordlist.create(word_id: Word.find_by(name: word).id, list_id: list_id)
+        elsif
+          WordSearch.new.valid_word?(word)
+          new_word = Word.create(name: word, ngsl: false )
+          Wordlist.create(word_id: new_word.id, list_id: list_id)
         else
-        new_word = Word.create(name: word, ngsl: false )
-        Wordlist.create(word_id: new_word.id, list_id: list_id)
+          # how to handle invalid words?
         end
       end
+  end
+
+  def valid_word?(word)
+    unless
+      Wordnik.word.get_definitions(word)[0] == nil
+      true
+    else
+      false
+    end
   end
 
   private
