@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe WordsController do
 	describe "GET #index" do
-		context "with params[:letter]" do
-			it "populates an array of words starting with the letter"
-			it "renders the :index view"
-		end
+		
 
 		context "without params" do
 			it "populates an array of all words" do
