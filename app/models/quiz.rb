@@ -43,45 +43,31 @@ class Quiz < ActiveRecord::Base
 
 	def get_examples
 		@id = self.id
-    if self.kind == 1
-		  self.list.words.each do |w|
-			  answer_array = [w.name]
+		self.list.words.each do |w|
+			answer_array = [w.name]
 		  	self.list.words.where.not(name: w.name).sample(3).each do |word|
 			  	answer_array << word.name
 			  	end
 		  	answer_array
-        if w.examples.exists?
-		  	  rand_example = w.examples.shuffle[0].text
-		    	q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
-        else
-          q = Question.create(word: w.name, quiz_id: @id, text: nil, answer: answer_array)
-        end
-	  	end
-    elsif self.kind == 2
-      self.list.words.each do |w|
-			  answer_array = [w.name]
-			  self.list.words.where.not(name: w.name).sample(3).each do |word|
-          answer_array << word.name
-				  end
-			  answer_array
-        q = Question.create(word: w.name, quiz_id: @id, text: w.definition, answer: answer_array)
-      end
-    elsif self.kind == 3
-      self.list.words.each do |w|
-			  answer_array = [w.name]
-			  self.list.words.where.not(name: w.name).sample(3).each do |word|
-          answer_array << word.name
-				end
-			  answer_array
-        if w.examples.exists?
-          rand_example = w.examples.shuffle[0].text.sub(/([^\s]+\s+[^\s]+[\s])/, '')
-          example = rand_example
-          q = Question.create(word: example, quiz_id: @id, text: example.split(' ').shuffle.join(' '), answer: answer_array)
-        else
-          q = Question.create(word: w.name, quiz_id: @id, text: nil, answer: answer_array)
-        end
-      end
-    end
+		  	if self.kind == 1
+		  		if w.examples.exists?
+				  	rand_example = w.examples.shuffle[0].text
+			    	q = Question.create(word: w.name, quiz_id: @id, text: rand_example, answer: answer_array)
+		        else
+		        q = Question.create(word: w.name, quiz_id: @id, text: nil, answer: answer_array)
+		        end
+		    elsif self.kind == 2
+		        q = Question.create(word: w.name, quiz_id: @id, text: w.definition, answer: answer_array)   
+		    elsif self.kind == 3
+				if w.examples.exists?
+			        rand_example = w.examples.shuffle[0].text.sub(/([^\s]+\s+[^\s]+[\s])/, '')
+			        example = rand_example
+			        q = Question.create(word: example, quiz_id: @id, text: example.split(' ').shuffle.join(' '), answer: answer_array)
+		        else
+			        q = Question.create(word: w.name, quiz_id: @id, text: nil, answer: answer_array)
+		        end
+		    end
+	    end
 	end
   
   def kind_2
