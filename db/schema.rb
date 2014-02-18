@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20140213054304) do
   add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
-    t.string   "word"
+    t.text     "word"
     t.text     "text"
     t.text     "answer"
     t.datetime "created_at"
