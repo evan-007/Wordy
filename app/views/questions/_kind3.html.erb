@@ -1,5 +1,9 @@
 Unscramble the sentence:
-<%= @question.text %><br /><br />
+<% if @question.text != nil %>
+    <%= @question.text %><br /><br />
+<% else %>
+    <%= get_scrambled(@question.word) %>
+<% end %>
 
 <br /><br />
 <%= form_for @question, url: {action: "grade"} do |f| %>

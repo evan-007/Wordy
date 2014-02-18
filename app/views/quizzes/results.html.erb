@@ -11,10 +11,14 @@
 	<tr>
 		<td>
 			<strong>Question <%= question.position %></strong>: 
-      <% if question.text != nil %>
-          <%= ng_clean(to_blank(question.text, question.word)) %>
+      <% unless @quiz.kind == 3 %>
+          <% if question.text != nil %>
+              <%= ng_clean(to_blank(question.text, question.word)) %>
+          <% else %>
+              <%= to_blank((get_text(question.word)) , question.word) %>
+          <% end %>
       <% else %>
-          <%= to_blank((get_text(question.word)) , question.word) %>
+          <%= get_scrambled question.word %>
       <% end %>
 		</td>
 	</tr>
@@ -25,7 +29,11 @@
 	</tr>
 	<tr class="success">
 		<td>
-			Correct answer: <%= question.word %>
+      <% unless @quiz.kind == 3 %>
+			    Correct answer: <%= question.word %>
+      <% else %>
+          Correct answer: <%= get_text question.word %>
+      <% end %>
 		</td>
 	</tr>
 	<% end %>

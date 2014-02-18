@@ -4,6 +4,10 @@ module ApplicationHelper
     Wordnik.word.get_top_example(word)['text']
   end
   
+  def get_scrambled(word)
+    Wordnik.word.get_top_example(word)['text'].split(' ').shuffle.join(' ')
+  end
+  
 	def to_blank(body, word)
 		body.sub(/\b(?i:#{word})\b/, '_____')
 	end
