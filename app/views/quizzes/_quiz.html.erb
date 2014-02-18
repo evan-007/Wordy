@@ -1,7 +1,7 @@
 <%= div_for quiz do %>
 	<div class="col-md-3">
 		<div class="span-7 text-center">
-			<img src="assets/question-mark.png" width="90"> <br/>
+      <%= image_tag("question-mark.png", width: '90', class: "img-responsive center-block") %>
       <%= link_to quiz.name, quiz_review_path(quiz.id) %> <br/>
 			<% if quiz.finished? %>
 			<%= link_to "Results", quiz_results_path(quiz), class: 'btn btn-default' %> <br/>

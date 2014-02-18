@@ -1,20 +1,30 @@
 <div class="container">
-  <div class="text-center">
-    <h2>New Quiz</h2>
-        <%= form_for @quiz do |f| %>
-        <p>
-            Word list
-            <%= f.select(:list_id, options_for_select(current_user.lists.collect { |l| [l.name, l.id]} )) %> <%= link_to "New list", new_list_path, class: "btn btn-primary btn-sm" %>
-        </p>
-        <p>
-	          Quiz Type
-	          <%= select(:quiz, :kind, [['Multiple choice', 1], ['Matching', 2], ['Unscramble', 3]]) %>
-        </p>
-        <p>
-	          <%= f.text_field :name, placeholder: "Quiz name" %>
-        </p>
-            <%= f.submit "Create" %>
-        <% end %>
-    <%= link_to "Back to Quizzes", quizzes_path %>
-  </div>
-</div>
+    <div class="col-md-4">
+        <div class="text-left">
+            <h2>New Quiz</h2>
+            <%= form_for @quiz do |f| %>
+            <p>
+                Word list
+                <%= f.select(:list_id, options_for_select(current_user.lists.collect { |l| [l.name, l.id]} )) %>
+            </p>
+            <p>
+	              Quiz Type
+              <%= select(:quiz, :kind, [['Multiple choice', 1], ['Matching', 2], ['Unscramble', 3]], class: "form-control") %>
+            </p>
+            <p>
+                <%= f.text_field :name, placeholder: "Quiz name", class: "form-control" %>
+            </p>
+                <%= f.submit "Create", class: "btn btn-primary" %><%= link_to "Back to Quizzes", quizzes_path, class: "btn btn-info" %>
+            <% end %>
+          
+        </div><!--text-right-->
+    </div><!--col-md-4-->
+    <div class="col-md-4">
+      <p>FAQ:</p>
+      <ul>
+          <li>Choose the wordlist to use for your quiz</li>
+          <li>Choose the quiz type (unscramble is impossible)</li>
+          <li>Give your quiz a unique name</li>
+      </ul>
+    </div>
+</div><!--containter-->

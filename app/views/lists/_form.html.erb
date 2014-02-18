@@ -3,12 +3,12 @@
 		<%= f.label :name %>
 	</p>
 	<p>
-		<%= f.text_field :name, placeholder: "List name..." %>
+    <%= f.text_field :name, placeholder: "List name...", class: "form-control" %>
 	<p>
 		<%= label_tag "Enter your words:" %>
 	</p>
 	<p>
-		<%= text_area_tag(:words) %>
+    <%= text_area_tag(:words, nil, size: "40x10", placeholder: "wow, much, words, so, nice", class: "form-control") %>
 	</p>
 		<% if @list.words.count != 0 %>
 	<p>
@@ -18,11 +18,15 @@
 				<%= div_for w do %>
 				<p>
 					<%= w.word.name %>
-					<%= w.word.definition %>
+          <% unless w.word.definition == nil %>
+					    <%= w.word.definition %>
+          <% else %>
+              <%= WordSearch.new.get_def(w.word.name) %>
+          <% end %>
 					<%= link_to "Delete", wordlist_path(w), method: 'delete', remote: true %>
 				</p>
 				<% end %>
 			<% end %>
 		<% end %>
-	<%= f.submit %>
+<%= f.submit 'Submit', class: "btn btn-default" %>
 <% end %>
