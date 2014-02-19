@@ -4,5 +4,5 @@ App for working with http://newgeneralservicelist.com and Corpus Linguistics Dat
 
 For http://thinkful.com final project.
 
-Demo at: http://stormy-earth-2247.herokuapp.com/
+Demo at: http://fierce-waters-4117.herokuapp.com/
 <tt>rake doc:app</tt>.
