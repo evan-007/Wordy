@@ -5,46 +5,47 @@
 	<%= link_to "Take a quiz!", quizzes_path, class: "btn btn-primary btn-lg" %>
 	<%= link_to "Check stats", user_path(current_user), class: "btn btn-primary btn-lg" %>
 	<% else %>
-  <h1>Perfect Your English<h/1>
+  <div class="text-center"><h1>Perfect Your English</h1>
   <h2>-- with millions of authentic examples!</h2>
-	<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+  <%= video_tag("video1.ogv", controls: true, size: "450x250") %><br />
+	<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %></div>
 	<% end %>
     </div>
     <div class= "container">
-      <h1 id="download" class="page-header">How it works:</h1>
+      <h1 id="download" class="page-header">Shazam:</h1>
       
       <div class="row bs-downloads" style="margin-bottom: 20px;">
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Efficient</h3>
-      <p>Practice the New General Service List: 3000 words that make up 90% of the English Language</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <p>Practice the <%= link_to "New General Service List", "http://newgeneralservicelist.org" %>: roughly 3000 words that make up 90% of general-use English.</p>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Accurate</h3>
-      <p>All examples pulled from authentic texts</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <p>Examples from <%= link_to "authentic texts", "http://www.natcorp.ox.ac.uk/" %></p>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Massive</h3>
-      <p>100 million examples</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <p>100 million words: extensive examples show word-usage in real contexts.</p>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
     </div>
       <div class="row bs-downloads" style="margin-bottom: 20px;">
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Variable</h3>
       <p>3 types of quizzes: multiple choice, matching and unscrambling. More to come!</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Trackable</h3>
-      <p>Watch your progress grow</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <p>Watch your progress, brag to your friends, impress your boss.</p>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Personalized</h3>
       <p>TOEFL, TOEIC, IELTS? Copy and paste your requirements and we'll do the rest!</p>
-      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <%= link_to "learn more", nil, class: "btn btn-primary" %>
     </div>
       </div>
 </div>
