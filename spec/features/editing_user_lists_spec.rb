@@ -10,7 +10,7 @@ feature "editing user lists" do
 		visit lists_path
 		first(:link, 'Edit').click
 		fill_in 'Name', with: 'Bestuh Englishee wordsuh'
-		click_button 'Update List'
+		click_button 'Submit'
 		expect(page).to have_content('List updated')
 	end
 end

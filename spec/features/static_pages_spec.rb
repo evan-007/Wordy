@@ -4,7 +4,7 @@ feature "Static pages" do
 
 	scenario "show the homepage" do
 		visit root_path
-		expect(page).to have_content("Welcome to Wordy")
+		expect(page).to have_content("Perfect Your English")
 	end
 
 	scenario "show the about page" do

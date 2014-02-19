@@ -1,5 +1,3 @@
-
-
 <h2><%= @quiz.questions.where(correct: true).count %> out of <%= @quiz.questions.count %> correct</h2><br/>
 <%= link_to "Back to Quizzes", quizzes_path(current_user), class: "btn btn-info pull-right" %>
 <%= link_to "Stats", user_path(current_user), class: "btn btn-success pull-right" %>
@@ -11,15 +9,19 @@
 	<tr>
 		<td>
 			<strong>Question <%= question.position %></strong>: 
-      <% unless @quiz.kind == 3 %>
-          <% if question.text != nil %>
-              <%= ng_clean(to_blank(question.text, question.word)) %>
-          <% else %>
-              <%= to_blank((get_text(question.word)) , question.word) %>
-          <% end %>
-      <% else %>
-          <%= get_scrambled question.word %>
-      <% end %>
+		    <% unless @quiz.kind == 3 %>
+		        <% if question.text != nil %>
+		            <%= ng_clean(to_blank(question.text, question.word)) %>
+		        <% else %>
+		            <%= to_blank((get_text(question.word)) , question.word) %>
+		        <% end %>
+		    <% else %>
+		        <% unless question.word == nil %>
+		            <%= question.word %>
+		        <% else %>
+			        <%= get_scrambled question.word %>
+		        <% end %>
+		    <% end %>
 		</td>
 	</tr>
 	<tr class="danger">
@@ -29,11 +31,15 @@
 	</tr>
 	<tr class="success">
 		<td>
-      <% unless @quiz.kind == 3 %>
+		    <% unless @quiz.kind == 3 %>
 			    Correct answer: <%= question.word %>
-      <% else %>
-          Correct answer: <%= get_text question.word %>
-      <% end %>
+		    <% else %>
+		        <% unless question.word == nil %>
+			        <%= question.word %>
+		        <% else %>
+			        Correct answer: <%= get_text question.word %>
+		        <% end %>
+		    <% end %>
 		</td>
 	</tr>
 	<% end %>
@@ -42,14 +48,12 @@
 	<% @quiz.questions.correct.each do |question| %>
 	<tr>
 		<td>
-      
 			<strong>Question <%= question.position %></strong>:
-      <% if question.text != nil %>
-          <%= ng_clean(to_blank(question.text, question.word)) %>
-      <% else %>
-          <%= to_blank((get_text(question.word)) , question.word) %>
-      <% end %>
-      
+			    <% if question.text != nil %>
+			        <%= ng_clean(to_blank(question.text, question.word)) %>
+			    <% else %>
+		        <%= to_blank((get_text(question.word)) , question.word) %>
+			    <% end %>
 		</td>
 	</tr>
 	<tr>

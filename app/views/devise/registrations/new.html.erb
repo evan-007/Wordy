@@ -1,25 +1,31 @@
-<h2>Sign up</h2>
-<%= link_to image_tag('fb-login-button.png'), user_omniauth_authorize_path(:facebook) %>
+<div class="container">
+  <div class="col-md-4">
+    <h2>Sign up</h2>
+    <p class="help-block">Email, password and password confirmation are required.</p>
+    <%= link_to image_tag('fb-login-button.png'), user_omniauth_authorize_path(:facebook) %>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email, :autofocus => true, class: "form-control" %></div>
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, class: "form-control" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div></br>
+  <%= f.password_field :password_confirmation, class: "form-control" %></div></br>
 
   <div><%= f.label :city %><br />
-  <%= f.text_field :city, placeholder: 'San Francisco, USA' %><br /></div>  
+  <%= f.text_field :city, placeholder: 'San Francisco, USA', class: "form-control" %><br /></div>  
 
-  <div>Upload an avatar<br />
-  <div><%= f.label :avatar %><br />
-  	<%= f.file_field :avatar %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+  
+  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
