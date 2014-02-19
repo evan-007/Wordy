@@ -51,20 +51,6 @@ task :import_ipa => :environment do
 	end
 end
 
-task :fake_cats => :environment do
-	words = Word.all.each do |word|
-		category = Category.first(offset: rand(Category.count))
-		word.update(categories: [category,])
-	end
-end
-
-task :fake_lists => :environment do
-	words = Word.all.each do |word|
-		list = List.first(offset: rand(List.count))
-		word.update(lists: [list,])
-	end
-end
-
 task :heroku_seed => :environment do
 	require 'csv'
 	words = 0 #value is the column in the .csv
@@ -73,7 +59,7 @@ task :heroku_seed => :environment do
 	CSV.foreach("#{Rails.root}"+"/lib/ngsl-utf8.csv") do |row|
 		Word.create(name: row[words], definition: row[definitions], ngsl: true)
 		@counter += 1
-		if @counter > 25
+		if @counter > 50
 			exit
 		end
 	end
