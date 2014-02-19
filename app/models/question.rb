@@ -4,9 +4,9 @@ class Question < ActiveRecord::Base
 	before_update :grade
 	acts_as_list scope: :quiz
 	scope :correct, -> { where(correct: true) }
-  scope :incorrect, -> { where(correct: false) }
+	scope :incorrect, -> { where(correct: false) }
 	scope :completed, -> { where.not(guess: nil) }
-  scope :incomplete, -> { where(guess: nil) }
+	scope :incomplete, -> { where(guess: nil) }
 	after_update :call_state_check
 
 	def finished

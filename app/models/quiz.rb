@@ -4,11 +4,11 @@ class Quiz < ActiveRecord::Base
 	validates :name, presence: true
 	validates :kind, presence: true
 	has_many :questions
-  after_create :get_examples 
+	after_create :get_examples 
 	after_update :count, if: :state_changed?
 	after_update :state_check
-  self.per_page = 10
-  scope :finished, -> { where(state: 'finished') }
+	self.per_page = 10
+	scope :finished, -> { where(state: 'finished') }
 
   
   
@@ -21,7 +21,7 @@ class Quiz < ActiveRecord::Base
 		end
 	end
   
-  def state_check
+	def state_check
   		if self.questions.last.guess != nil
   			self.finishing
   		elsif self.questions.completed != nil
