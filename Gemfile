@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+gem 'unirest'
 gem "delayed_job_web"
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'

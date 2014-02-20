@@ -223,6 +223,8 @@ GEM
       json (~> 1.4)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (2.14.7)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -279,6 +281,10 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unirest (1.1.2)
+      addressable (~> 2.3.5)
+      json (~> 1.8.1)
+      rest-client (~> 1.6.7)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -332,6 +338,7 @@ DEPENDENCIES
   state_machine
   turbolinks
   uglifier (>= 1.3.0)
+  unirest
   will_paginate (~> 3.0.0)
   will_paginate-bootstrap
   wordnik
