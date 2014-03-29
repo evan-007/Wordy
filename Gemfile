@@ -19,6 +19,18 @@ gem 'nokogiri', "~> 1.6.1"
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'bootstrap-sass'
 gem 'omniauth-facebook'
+
+gem 'capistrano', '~>3.0.1' 
+
+#railsspecificcapistranofunctions
+gem 'capistrano-rails', '~>1.1.0'
+
+#integratebundlerwithcapistrano
+gem 'capistrano-bundler'
+
+#ifyouareusingRbenv
+gem 'capistrano-rbenv', "~>2.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
